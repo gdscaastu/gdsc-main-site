@@ -19,9 +19,7 @@ import MainNavbar from "../Components/Navabar";
 const HomePage = () => {
   return (
     <div className="w-full flex flex-col items-center lg:gap-20 overflow-hidden dark:bg-white">
-      <div className="lg:w-full bg-white border-gray-200 dark:bg-gray-900 shadow-md flex justify-center w-full mb-2">
-        <MainNavbar />
-      </div>
+      <div className="lg:w-full bg-white border-gray-200 dark:bg-gray-900 shadow-md flex justify-center w-full mb-2"></div>
       <div className="flex flex-col w-full lg:w-[80%] lg:justify-self-center lg:flex-row lg:gap-20 mt-4.5 mb-4">
         <BecomeMemeber />
         <Slider />
@@ -108,9 +106,6 @@ const HomePage = () => {
             />
           </div>
         </div>
-      </div>
-      <div className="lg:w-[75%] w-full lg:mt-5 mt-16 py-2">
-        <Footer />
       </div>
     </div>
   );
