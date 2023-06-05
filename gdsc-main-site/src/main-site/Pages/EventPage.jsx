@@ -5,13 +5,17 @@ import MainNavbar from "../Components/Navabar";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     fetch("https://gdsc-main-site.onrender.com/v1/event")
       .then((response) => response.json())
-      .then((data) => setEvents(data))
+      .then((data) => {
+        setEvents(data);
+        setIsLoading(false);
+      })
       .catch((error) => console.error(error));
   }, []);
-  console.log(events);
 
   return (
     <div className="w-full flex flex-col gap-10">
@@ -29,11 +33,23 @@ const EventPage = () => {
               <h1>Developer Student Clubs is a Google Developers</h1>
             </div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 sm:gap-5 sm:grid-cols-3 gap-10">
-            {events.map((event) => (
-              <EventCard event={event} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="grid grid-cols-2 lg:grid-cols-4 sm:gap-5 sm:grid-cols-3 gap-10">
+              {[...Array(12)].map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-gray-200 rounded-md h-40"></div>
+                  <div className="mt-2 h-4 bg-gray-200 rounded-md"></div>
+                  <div className="mt-2 h-4 bg-gray-200 rounded-md"></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 lg:grid-cols-4 sm:gap-5 sm:grid-cols-3 gap-10">
+              {events.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className="w-[100%] mt-10"></div>
