@@ -8,10 +8,15 @@ const EventDetail = ({ onClose, id }) => {
   const isDesktop = useMediaQuery({ minWidth: 768 });
   const [event, setEvent] = useState([]);
   const [ind, setInd] = useState(0);
+
+  const [loading, setLoading] = useState(true); // add loading state
   useEffect(() => {
     fetch(`https://gdsc-main-site.onrender.com/v1/event/${id}`)
       .then((response) => response.json())
-      .then((data) => setEvent(data))
+      .then((data) => {
+        setEvent(data);
+        setLoading(false); // set loading to false once data has been fetched
+      })
       .catch((error) => console.error(error));
     console.log(event);
   }, []);
@@ -23,6 +28,79 @@ const EventDetail = ({ onClose, id }) => {
   let imageurls = [""];
   if (event.image_url) {
     imageurls = event.image_url.split(";");
+  }
+
+  if (!isDesktop) {
+    return <MobileDetail id={id} />;
+  }
+
+  // render loading skeleton while loading is true
+  if (loading) {
+    return (
+      <div className="flex flex-col w-[80%] gap-10 dark:text-black">
+        <div className="animate-pulse">
+          <h1 className="text-blue-500 text-lg">Loading...</h1>
+        </div>
+        <div className="flex w-full gap-5 h-[420px]">
+          <div className="w-1/5 h-full animate-pulse overflow-y-scroll scrolly">
+            <div className="w-4/6 h-[120px] box-sizing-border-box flex items-center justify-center mb-5 rounded-md shadow-right-bottom">
+              <div className="w-full h-full bg-gray-300 rounded-md"></div>
+            </div>
+            <div className="w-4/6 h-[120px] box-sizing-border-box flex items-center justify-center mb-5 rounded-md shadow-right-bottom">
+              <div className="w-full h-full bg-gray-300 rounded-md"></div>
+            </div>
+            <div className="w-4/6 h-[120px] box-sizing-border-box flex items-center justify-center mb-5 rounded-md shadow-right-bottom">
+              <div className="w-full h-full bg-gray-300 rounded-md"></div>
+            </div>
+          </div>
+          <div className="w-4/5 h-4/5 flex gap-[70px]">
+            <div
+              style={{ backgroundColor: "#f1f1f1" }}
+              className="h-full w-7/12  bg-gray-200 relative animate-pulse">
+              <div className="absolute w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-300 shadow-right-bottom"></div>
+            </div>
+            <div className="h-full w-7/12 flex flex-col gap-5">
+              <div>
+                <div className="text-2xl font-bold animate-pulse bg-gray-300 w-3/4 h-8"></div>
+              </div>
+              <div className="flex gap-5">
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    <span></span>
+                    <span className="text-gray-600 animate-pulse bg-gray-300 w-3/4 h-6"></span>
+                  </div>
+                  <div className="flex gap-2">
+                    <span></span>
+                    <span className="text-gray-600 animate-pulse bg-gray-300 w-3/4 h-6"></span>
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <div className="text-gray-600 animate-pulse bg-gray-300 w-full h-6"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-1/5 h-full animate-pulse overflow-y-scroll scrolly">
+            <div className="w-4/6 h-[120px] box-sizing-border-box flex items-center justify-center mb-5 rounded-md shadow-right-bottom">
+              <div className="w-full h-full bg-gray-300 rounded-md"></div>
+            </div>
+            <div className="w-4/6 h-[120px] box-sizing-border-box flex items-center justify-center mb-5 rounded-md shadow-right-bottom">
+              <div className="w-full h-full bg-gray-300 rounded-md"></div>
+            </div>
+            <div className="w-4/6 h-[120px] box-sizing-border-box flex items-center justify-center mb-5 rounded-md shadow-right-bottom">
+              <div className="w-full h-full bg-gray-300 rounded-md"></div>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <Link
+            to={`/event/${event.id}`}
+            className="text-white font-bold bg-blue-500 px-6 py-2 rounded-md shadow-lg hover:bg-blue-600 transition-colors">
+            View More
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   if (!isDesktop) {
