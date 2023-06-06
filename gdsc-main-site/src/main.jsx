@@ -18,9 +18,25 @@ import UploadImages from "./admin-site/Components/UploadImages";
 import App from "./App";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Team from "./main-site/Components/TeamComponents/Team";
+import AdminTeam from "./admin-site/Components/Team.jsx/Team";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AddNewSponsorPage />
+   {/* <EventPage/> */}
+   {/* <AddNewEventPage /> */}
+    {/* <AddNewSponsorPage /> */}
+    {/* <AddNewProjectForm /> */}
+    {/* <UpdateProjectForm /> */}
+    {/* <AdminProject /> */}
+    {/* <AddContributorModal /> */}
+    {/* <AddNewSponsor /> */}
+    {/* <UpdateSponsorForm /> */}
+    {/* <Sponsors /> */}
+    {/* <UploadImages /> */}
+    {/* <AdminTeam /> */}
+  
+ 
+
   </React.StrictMode>
 );
