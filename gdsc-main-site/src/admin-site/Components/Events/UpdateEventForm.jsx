@@ -1,11 +1,10 @@
 import React from "react";
-import DatePicker from "./che";
-import TimePickerComponent from "./Time";
-import ImageDropzone from "./ImageDrop";
+import DatePicker from "../Date";
+import TimePickerComponent from "../Time";
 import { useState, useEffect } from "react";
-import { set } from "date-fns";
+import Skeleton from "react-loading-skeleton";
 
-const UpdateEvent = ({ id = 1 }) => {
+const UpdateEventForm = ({ id = 1 }) => {
   const [event, setEvent] = useState(null); // Replace with the date value from the API response
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -56,79 +55,91 @@ const UpdateEvent = ({ id = 1 }) => {
         </h1>
       </div>
       <div>
-        <form onSubmit={handleSubmit} action="">
-          <div className="mb-10 flex">
-            <label className="w-[15%] items-center flex " htmlFor="">
-              Title*
-            </label>
-            <input
-              placeholder="Event Title"
-              value={event?.name}
-              onChange={(e) => setEvent({ ...event, name: e.target.value })}
-              className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-            />
-          </div>
-          <div className="flex mb-10">
-            <label className="w-[15%] items-center flex " htmlFor="">
-              Description*
-            </label>
-            <textarea
-              id="message"
-              rows={4}
-              className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="Description..."
-              value={event?.description}
-              onChange={(e) =>
-                setEvent({ ...event, description: e.target.value })
-              }
-            />
-          </div>
-
-          <div className="mb-10 flex">
-            <label className="w-[15%] items-center flex " htmlFor="">
-              Place:
-            </label>
-            <input
-              placeholder="Event Name"
-              value={event?.location}
-              onChange={(e) => setEvent({ ...event, location: e.target.value })}
-              className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-            />
-          </div>
-          <div className="flex mb-14">
-            <div className="flex w-[15%]">
-              <label className="flex justify-center items-center" htmlFor="">
-                Date:
+        {event ? (
+          <form onSubmit={handleSubmit} action="">
+            <div className="mb-10 flex">
+              <label className="w-[15%] items-center flex " htmlFor="">
+                Title*
               </label>
+              <input
+                placeholder="Event Title"
+                value={event?.name}
+                onChange={(e) => setEvent({ ...event, name: e.target.value })}
+                className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              />
             </div>
-            <div className="w-[90%] flex justify-between">
-              <div className="w-[25%]">
-                <DatePicker setSelectedDate={handleDateChange} />
-              </div>
-              <div className="w-[40%] flex gap-10 justify-between">
-                <label className="flex justify-center items-center" htmlFor="">
-                  Time:
-                </label>
-                <TimePickerComponent setSelectedTime={handleTimeChange} />
-              </div>
+            <div className="flex mb-10">
+              <label className="w-[15%] items-center flex " htmlFor="">
+                Description*
+              </label>
+              <textarea
+                id="message"
+                rows={4}
+                className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                placeholder="Description..."
+                value={event?.description}
+                onChange={(e) =>
+                  setEvent({ ...event, description: e.target.value })
+                }
+              />
             </div>
-          </div>
 
-          <div className="flex justify-between">
-            <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
-              <span className="flex justify-center items-center">Cancel</span>
-            </button>
-            <button
-              type="submit"
-              className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold">
-              <span className="flex justify-center items-center">
-                Save Changes
-              </span>
-            </button>
+            <div className="mb-10 flex">
+              <label className="w-[15%] items-center flex " htmlFor="">
+                Place:
+              </label>
+              <input
+                placeholder="Event Name"
+                value={event?.location}
+                onChange={(e) =>
+                  setEvent({ ...event, location: e.target.value })
+                }
+                className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              />
+            </div>
+            <div className="flex mb-14">
+              <div className="flex w-[15%]">
+                <label className="flex justify-center items-center" htmlFor="">
+                  Date:
+                </label>
+              </div>
+              <div className="w-[90%] flex justify-between">
+                <div className="w-[25%]">
+                  <DatePicker setSelectedDate={handleDateChange} />
+                </div>
+                <div className="w-[40%] flex gap-10 justify-between">
+                  <label
+                    className="flex justify-center items-center"
+                    htmlFor="">
+                    Time:
+                  </label>
+                  <TimePickerComponent setSelectedTime={handleTimeChange} />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between">
+              <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
+                <span className="flex justify-center items-center">Cancel</span>
+              </button>
+              <button
+                type="submit"
+                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold">
+                <span className="flex justify-center items-center">
+                  Save Changes
+                </span>
+              </button>
+            </div>
+          </form>
+        ) : (
+          <div className="mb-10 flex">
+            <Skeleton width={80} height={20} />
+            <Skeleton width={300} height={20} />
           </div>
-        </form>
+        )}
       </div>
     </div>
   );
 };
-export default UpdateEvent;
+
+export default UpdateEventForm;

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/SliderImages/LO.png";
 
 const Navbar = () => {
   return (
@@ -7,13 +7,7 @@ const Navbar = () => {
       <div className="block py-2 px-4">
         <div className=" flex flex-col gap-0.1  items-center self-center w-72">
           <div className="flex items-center justify-center">
-            <img className=" w-10 h-10 object-contain" src={logo} alt="" />
-          </div>
-          <div className="flex flex-col items-center justify-center text-center gap-0.1">
-            <p className="text-sm">Google Developer Students Clubs</p>
-            <p className="text-8px">
-              Addis Ababa Science And Technology <br /> University
-            </p>
+            <img className=" w-54 h-24 object-contain" src={logo} alt="" />
           </div>
         </div>
       </div>
@@ -32,7 +26,7 @@ const Navbar = () => {
             fill="#85cb97"
           />
         </svg>
-        <p>Admin user</p>
+        <p>Admin User</p>
       </div>
       <div className="flex flex-col gap-1">
         <div className="block py-2 px-6">Projects</div>

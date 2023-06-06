@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import DatePicker from "../Date";
+import TimePicker from "../Time";
 import AddContributorModal from "./AddContributorModal";
 
 const AddNewProjectForm = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [startDate, setstartDate] = useState(null);
+  const [endDate, setendDate] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isopen, setIsopen] = useState(false);
   const [Contributor, setContributor] = useState([]);
@@ -15,6 +19,7 @@ const AddNewProjectForm = () => {
   const handleDeleteContributor = (index) => {
     const newItems = Contributor.filter((item, i) => i !== index);
     setContributor(newItems);
+    console.log(Contributor);
   };
 
   const toggleAddModal = () => {
@@ -26,10 +31,10 @@ const AddNewProjectForm = () => {
   };
   const handleFormSubmit = (contributor, role) => {
     const formData = {
-      id: contributor.slice(0, 1),
-      name: contributor.slice(2),
+      name: contributor,
       role: role,
     };
+
     setContributor([...Contributor, formData]);
     setLen(Contributor.length);
   };
@@ -39,20 +44,22 @@ const AddNewProjectForm = () => {
       name: projectName,
       description: projectDescription,
       project_link: projectLink,
-      type: selectedOptions.value,
+      status: selectedOption.value,
+      startdate: startDate,
+      enddate: endDate,
     };
     if (
       !formData.name ||
       !formData.description ||
       !formData.project_link ||
-      !formData.type
+      !formData.status
     ) {
       console.error("Form data is invalid");
       alert("please fill out all fields");
       return;
     }
     console.log(formData);
-    // Send the request to the API with the valid form data
+    console.log(Contributor);
   };
 
   const handleProjectSubmit = (e) => {
@@ -61,7 +68,7 @@ const AddNewProjectForm = () => {
       name: projectName,
       description: projectDescription,
       project_link: projectLink,
-      type: selectedOptions.value,
+      status: selectedOptions.value,
     };
     fetch("https://gdsc-main-site.onrender.com/v1/project", {
       method: "POST",
@@ -125,22 +132,46 @@ const AddNewProjectForm = () => {
 
             <div className="mb-10 flex justify-between">
               <label className="w-[15%] items-center flex" htmlFor="">
-                Project Type*
+                Status*
               </label>
               <div className="w-[90%]">
                 <Select
                   className="w-full rounded-md"
                   options={[
-                    { value: "Web Development", label: "Web Development" },
+                    { value: "planning", label: "planning" },
                     {
-                      value: "Mobile App Development",
-                      label: "Mobile App Development",
+                      value: "in progress",
+                      label: "in progress",
+                    },
+                    {
+                      value: "completed",
+                      label: "completed",
                     },
                   ]}
-                  value={selectedOptions}
-                  onChange={(options) => setSelectedOptions(options)}
-                  placeholder="Select project type"
+                  value={selectedOption}
+                  onChange={(option) => setSelectedOption(option)}
+                  placeholder="Select project status"
                 />
+              </div>
+            </div>
+            <div className="mb-10 flex">
+              <div className="flex w-[15%]">
+                <label className="flex justify-center items-center" htmlFor="">
+                  Start Date:
+                </label>
+              </div>
+              <div className="w-[90%] flex justify-between">
+                <div className="w-[25%]">
+                  <DatePicker setSelectedDate={setstartDate} />
+                </div>
+                <div className="w-[40%] flex gap-10 justify-between">
+                  <label
+                    className="flex justify-center items-center"
+                    htmlFor="">
+                    End Date:
+                  </label>
+                  <DatePicker setSelectedDate={setendDate} />
+                </div>
               </div>
             </div>
             <div className="mb-10 flex">
@@ -159,6 +190,7 @@ const AddNewProjectForm = () => {
               <h1 className="text-lg items-center">Contributor:</h1>
               <button
                 onClick={toggleAddModal}
+                type="button"
                 className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md">
                 <span className="text-white  dark:text-white flex items-center justify-center text-sm">
                   Add
@@ -186,7 +218,7 @@ const AddNewProjectForm = () => {
                       index === Contributor.length - 1 ? "border-b" : ""
                     }`}>
                     <div>
-                      <h1 className="">{contributor.name}</h1>
+                      <h1 className="">{contributor.name.slice(1)}</h1>
                     </div>
                     <div className="flex gap-2">
                       <button
