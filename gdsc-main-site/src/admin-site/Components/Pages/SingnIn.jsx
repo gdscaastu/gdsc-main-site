@@ -33,6 +33,7 @@ const SingnIn = () => {
       setError("An error occurred, please try again later");
     }
   };
+  useEffect;
 
   return (
     <div className="flex justify-center items-center mt-16">
