@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const ImageDropzone = () => {
-  const [selectedFiles, setSelectedFiles] = useState([]);
+const ImageDropzone = ({ selectedFiles, setSelectedFiles }) => {
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     setSelectedFiles((prevSelectedFiles) => [...prevSelectedFiles, ...files]);

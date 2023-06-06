@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import AddForm from "./AddForm";
+import AddContributorForm from "./AddContributorForm";
 
 const AddContributorModal = ({ isOpen, toggle, handleFormSubmit }) => {
   return (
@@ -35,7 +35,10 @@ const AddContributorModal = ({ isOpen, toggle, handleFormSubmit }) => {
             </button>
           </div>
           <div>
-            <AddForm handleFormSubmit={handleFormSubmit} togglemodal={toggle} />
+            <AddContributorForm
+              handleFormSubmit={handleFormSubmit}
+              togglemodal={toggle}
+            />
           </div>
         </div>
       </div>

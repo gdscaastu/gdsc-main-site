@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const AddContributorForm = ({ handleFormSubmit, togglemodal }) => {
   const [members, setMembers] = useState([]);
-  const [selectedMember, setSelectedMember] = useState("");
+  const [selectedMember, setSelectedMember] = useState({});
   const [selectedRole, setSelectedRole] = useState("");
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const AddContributorForm = ({ handleFormSubmit, togglemodal }) => {
   };
   const handleInputChange = (event) => {
     setSelectedMember(event.target.value);
+    console.log(selectedMember);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
