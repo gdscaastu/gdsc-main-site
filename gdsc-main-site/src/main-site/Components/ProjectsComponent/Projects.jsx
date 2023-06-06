@@ -2,8 +2,7 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
 import Project from "./Project";
 import Spinner from "react-bootstrap/Spinner";
-import "../../../projectDetail.css";
-import "../../../projectCard.css";
+
 
 const ProjectContext = createContext();
 
@@ -32,13 +31,7 @@ const ProjectList = () => {
   const { projects } = useContext(ProjectContext);
   console.log(projects);
 
-  if (!projects) {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    );
-  }
+
 
   return (
     <div className="container flex flex-row flex-wrap ">

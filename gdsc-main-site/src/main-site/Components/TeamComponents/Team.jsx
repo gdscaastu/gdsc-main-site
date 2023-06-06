@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-import "../../../teamPage.css";
 import axios from "axios";
 import MemberCard from "./MemberCard";
 import { Accordion } from "react-bootstrap";
@@ -55,10 +54,17 @@ const CardList = () => {
                 <span>{startYear}</span>/
                 <span>{parseInt(startYear) + 1} year</span>
               </Accordion.Header>
-              <Accordion.Body className=" core-team-member-card  flex flex-row flex-wrap">
+              <Accordion.Body 
+              style={{
+                backgroundColor:"rgb(234,234,234)"  }}
+              className="flex flex-row flex-wrap">
                 {Object.entries(team).map(([position, members]) => (
                   <div>
-                    <h4 className="text-left team-header">{position}</h4>
+                    <h4
+                    style={{
+                      color: "#4486f4"
+                    }}
+                    className="text-left">{position}</h4>
                     <div className="flex">
                       {members.map((member) => {
                         return (

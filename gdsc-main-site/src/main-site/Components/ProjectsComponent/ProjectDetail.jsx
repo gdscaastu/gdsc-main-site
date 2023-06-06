@@ -2,8 +2,7 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import ProjectMiniCard from "./ProjectMiniCard";
 import Contributer from "./Contributer";
 import { useParams } from "react-router-dom";
-import "../../../projectDetail.css";
-import "../../../projectCard.css";
+
 
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
@@ -61,15 +60,44 @@ const Projectdetail = () => {
   return (
     <div className="container">
       <div
-        className="header-image container mt-3"
-        style={{ backgroundImage: `url(${imageUrls[0]})` }}>
-        <div className="">
-          <h6>{project.name}</h6>
+        className="container mt-3"
+        style={{ 
+          backgroundImage: `url(${imageUrls[0]})` ,
+          width: "100%",
+          height: "40vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+          }}>
+
+        <div 
+          style={{
+            width: "300px",
+            position: "relative",
+            left:" 40%",
+            top: "88%",
+          }}
+        className="">
+          <h6
+          style={{
+            color:" #333",
+            backgroundColor: "white",
+            padding: "15px"
+          }}
+          >{project.name}</h6>
         </div>
       </div>
       <div className="container mt-5">
-        <div className="project-detail-description container">
-          <p>
+        <div 
+        style={{
+          marginTop: "20px",
+          textAlign: "left"
+        }}
+        className="container">
+          <p
+          style={{
+            fontSize:"13px"
+          }}
+          >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Accusantium ab corrupti nemo quod porro cumque numquam voluptatem
             voluptas, adipisci vel perferendis laboriosam, unde earum
@@ -80,28 +108,67 @@ const Projectdetail = () => {
             voluptatum.
           </p>
         </div>
-        <div className="project-detail-main container mt-5">
-          <h6>project Detail</h6>
+        <div 
+        style={{
+          textAlign: "left"
+        }}
+        className="container mt-5">
+          <h6
+          style={{ color: "#4486f4" }}
+          >project Detail</h6>
 
-          <div className="project-detail-type-and-link">
-            <span>
+          <div className="">
+            <span
+              style={{
+              paddingRight: "10px",
+              fontweight: "600"
+
+            }}
+            >
               Project type:{" "}
-              <span className="project-detail-type-text text-muted">
-                inperson sessions
+              <span 
+                style={{ fontSize: "13px", 
+                paddingRight: "10px",
+                fontweight: "600" }}
+                className="text-muted">
+                {project.project_type }
               </span>
             </span>
-            <span>
+            <span
+            style={{
+              paddingRight: "10px",
+              fontweight: "600"
+            }}
+            >
               Project link:{" "}
-              <a href="https://project.org">
+              <a 
+              style={{
+                textDecoration: "none",
+                fontsize: "13px",
+                fontWeight: "200",
+                
+              }}
+              href="https://project.org">
+                 
                 {project.project_link ? (
-                  <span>{project.project_link}</span>
+                  <span
+                  style={{
+                    paddingRight: "10px",
+                    fontweight: "600"
+                  }}
+                  >{project.project_link}</span>
                 ) : (
-                  <span>no link available</span>
+                  <span
+                  style={{
+                    paddingRight: "10px",
+                    fontweight: "600"
+                  }}
+                  >no link available</span>
                 )}
               </a>
             </span>
           </div>
-          <div className="project-detail-mini-image-card mt-4 mb-5 row">
+          <div className="mt-4 mb-5 row">
             {imageUrls.map((item) => {
               return (
                 <div className="col-sm-3 mt-3">
@@ -112,14 +179,18 @@ const Projectdetail = () => {
           </div>
           <br />
           {contributors ? (
-            <div className="contributors mt-5 mb-3">
+            <div 
+           
+            className="mt-5 mb-3">
               <div className="mt-5">
                 <h6>Contributors</h6>
               </div>
-              <div className="row contributors">
+              <div className="row ">
                 {contributors.map((contributer) => {
                   return (
-                    <div className="col-sm-4 mt-3 contributors">
+                    <div 
+                   
+                    className="col-sm-4 mt-3 contributors">
                       <Contributer contributer={contributer} />
                     </div>
                   );
@@ -131,7 +202,16 @@ const Projectdetail = () => {
           )}
 
           <div className="d-flex justify-content-center">
-            <a className="back-to-project-btn mb-5" href={`/projects`}>
+            <a 
+            style={{
+              backgroundColor: "rgb(14, 14, 14)",
+              color: "white",
+              padding: "8px 20px",
+              borderRadius: "20px",
+              cursor: "pointer",
+              textDecoration: "none"
+            }}
+            className="mb-5" href={`/projects`}>
               Back to Projects
             </a>
           </div>

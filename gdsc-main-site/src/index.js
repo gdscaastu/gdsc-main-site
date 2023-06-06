@@ -4,8 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./projectCard.css";
-import "./projectDetail.css";
+
 import "./teamPage.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
