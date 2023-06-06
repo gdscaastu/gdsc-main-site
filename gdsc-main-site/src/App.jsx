@@ -12,9 +12,6 @@ function App() {
   return (
     <div className="App dark:bg-white">
       <Router>
-        <div className="lg:w-full bg-white border-gray-200 dark:bg-white shadow-md flex justify-center w-full mb-2">
-          <MainNavbar />
-        </div>
         <Routes>
           <Route path="/" exact Component={HomePage} />
           <Route path="/projects" exact Component={Projects} />
@@ -24,9 +21,6 @@ function App() {
           <Route path="/events" exact Component={EventPage} />
         </Routes>
       </Router>
-      <div className="lg:w-[90%] w-[100%] lg:mt-10 lg:ml-10 ml-1 mr-1 ">
-        <Footer />
-      </div>
     </div>
   );
 }

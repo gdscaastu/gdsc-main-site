@@ -19,18 +19,23 @@ const EventPage = () => {
 
   return (
     <div className="w-full flex flex-col gap-10">
+      <div className="lg:w-full bg-white border-gray-200 dark:bg-white shadow-md flex justify-center w-full mb-2">
+        <MainNavbar />
+      </div>
       <div className="lg:w-full bg-white border-gray-200 dark:bg-white shadow-md flex justify-center w-full mb-2"></div>
       <div className="w-[100%] justify-center flex  ">
         <div className="flex flex-col w-full sm:w-[80%] gap-12 m-4 sm:m-0">
           <div className="flex flex-col gap-2 dark:text-black">
-            <h1 className="text-blue-400">Events</h1>
-            <div className="">
-              <h1>
+            <h1 className="text-lg text-blue-400">Events</h1>
+            <div className="text-base">
+              <h1 className="text-sm">
                 Developers Student Clubs is a Google developers program for
                 university student to learn mobile and web development skills
                 and leadership skills
               </h1>
-              <h1>Developer Student Clubs is a Google Developers</h1>
+              <h1 className="text-sm">
+                Developer Student Clubs is a Google Developers
+              </h1>
             </div>
           </div>
           {isLoading ? (
@@ -52,7 +57,9 @@ const EventPage = () => {
           )}
         </div>
       </div>
-      <div className="w-[100%] mt-10"></div>
+      <div className="lg:w-[90%] w-[100%] lg:mt-10 lg:ml-10 ml-1 mr-1 ">
+        <Footer />
+      </div>
     </div>
   );
 };

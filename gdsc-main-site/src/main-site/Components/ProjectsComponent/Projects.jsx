@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
 import Project from "./Project";
 import Spinner from "react-bootstrap/Spinner";
-
+import "../../../index.css";
 
 const ProjectContext = createContext();
 
@@ -30,8 +30,6 @@ const ProjectProvider = ({ children }) => {
 const ProjectList = () => {
   const { projects } = useContext(ProjectContext);
   console.log(projects);
-
-
 
   return (
     <div className="container flex flex-row flex-wrap ">

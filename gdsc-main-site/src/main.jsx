@@ -7,6 +7,7 @@ import Navbar from "./admin-site/Components/Navbar";
 import AddNewEventPage from "./admin-site/Components/Pages/AddNewEventPage";
 import AddNewSponsorPage from "./admin-site/Components/Pages/AddNewSponsorPage";
 import EventPage from "./admin-site/Components/Pages/EventPage";
+import SingnIn from "./admin-site/Components/Pages/SingnIn";
 import AddContributorModal from "./admin-site/Components/Project.jsx/AddContributorModal";
 import AddNewProjectForm from "./admin-site/Components/Project.jsx/AddNewProjectForm";
 import AdminProject from "./admin-site/Components/Project.jsx/AdminProject";
@@ -16,11 +17,9 @@ import Sponsors from "./admin-site/Components/Sponsors/Sponsors";
 import UpdateSponsorForm from "./admin-site/Components/Sponsors/UpdateSponsor";
 import UploadImages from "./admin-site/Components/UploadImages";
 import App from "./App";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AddNewSponsorPage />
+    <SingnIn />
   </React.StrictMode>
 );
