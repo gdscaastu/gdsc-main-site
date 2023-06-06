@@ -2,15 +2,17 @@ import React from "react";
 
 const Opportunity = () => {
   return (
-    <div className="w-full p-8 bg-white flex flex-col justify-between gap-4">
+    <div className="w-full p-8 bg-white flex flex-col justify-between gap-2">
       <div>
-        <h1 className="text-blue-500">
+        <h1 className="text-blue-500 text-xl">
           Opportunities GDSC'S Provides Students with
         </h1>
       </div>
-      <div className="text-black text-xl font-bold tracking-wide">
-        <p>Developer Student Clubs is a Google </p>
-        <p>Developers program for a university students.</p>
+      <div className="text-lg font-bold tracking-wide leading-relaxed flex flex-col gap-0">
+        <p>
+          Developer Student Clubs is a Google Developers program for a
+          university students.
+        </p>
       </div>
       <div className="flex flex-col gap-3 text-sm">
         <p>

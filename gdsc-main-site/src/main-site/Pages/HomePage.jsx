@@ -75,7 +75,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="lg:w-[80%] lg:my-0 my-10">
+      <div className="lg:w-[80%] lg:my-20 my-10">
         <FAQs />
         <div className="px-7">
           <div className="border border-black rounded-lg overflow-hidden">

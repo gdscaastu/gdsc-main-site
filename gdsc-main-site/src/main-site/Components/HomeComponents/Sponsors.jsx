@@ -15,7 +15,7 @@ const Sponsors = () => {
     console.log(data);
   }, []);
   return (
-    <div className="lg:w-full w-[95%] p-6 px-10 bg-white rounded-lg shadow-right-bottom">
+    <div className="lg:w-full w-[95%] py-2 px-10 bg-white rounded-lg shadow-right-bottom">
       <div>
         <h1 className="text-black text-lg  text-center">
           Supported by many Sponsors, including

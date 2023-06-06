@@ -6,14 +6,12 @@ function FAQsAccordion({ children, answer, style = "t" }) {
     setIsOpen(!isOpen);
   };
   return (
-    <div
-      className="
-    ">
+    <div className="w-full">
       <button
         type="button"
-        className={`flex w-full text-sm items-center bg-white text-blue-500 justify-between px-5 py-4 text-left font-medium border border-${style}-black`}
+        className={`flex w-full text-base items-center bg-white text-blue-500 justify-between lg:px-5 px-3 py-4 text-left font-medium border border-${style}-black`}
         onClick={handleClick}>
-        <span>{children}</span>
+        <span className="w-full lg:text-base text-sm">{children}</span>
         {isOpen ? (
           <svg
             data-accordion-icon=""
@@ -43,8 +41,8 @@ function FAQsAccordion({ children, answer, style = "t" }) {
         )}
       </button>
       {isOpen && (
-        <div className="px-5 w-full py-3 bg-gray-200 border border-t-black">
-          <p className="text-sm">{answer}</p>
+        <div className="lg:px-5 px-3 w-full py-3 bg-gray-200 border border-t-black">
+          <p className="lg:text-base text-sm w-full">{answer}</p>
         </div>
       )}
     </div>

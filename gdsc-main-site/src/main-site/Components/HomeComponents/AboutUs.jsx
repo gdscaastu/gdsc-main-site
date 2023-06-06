@@ -3,12 +3,12 @@ import React from "react";
 const AboutUs = () => {
   return (
     <div className="w-full lg:w-1/2">
-      <div className="max-w-3xl p-8 bg-white rounded-lg flex flex-col justify-between gap-5">
+      <div className="max-w-3xl p-8 bg-white rounded-lg flex flex-col justify-between gap-2">
         <div>
-          <h1 className="text-blue-500">About Us</h1>
+          <h1 className="text-blue-500 text-2xl">About Us</h1>
         </div>
         <div>
-          <h1 className="text-xl text-black font-bold">
+          <h1 className="text-xl  font-bold">
             Developer Student Clubs is a Google Developers program for
             university students.
           </h1>
