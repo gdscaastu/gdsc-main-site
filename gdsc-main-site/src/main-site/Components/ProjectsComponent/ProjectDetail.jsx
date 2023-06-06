@@ -3,7 +3,7 @@ import ProjectMiniCard from "./ProjectMiniCard";
 import Contributer from "./Contributer";
 import { useParams } from "react-router-dom";
 import "../../../index.css";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 const ProjectContext = createContext();

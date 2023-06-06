@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import pic from "../../../assets/SliderImages/pic2.jpeg";
 
 const EventCard = ({ event, isLoading }) => {
@@ -23,13 +22,14 @@ const EventCard = ({ event, isLoading }) => {
             src={imageurls[0]}
             className="w-full h-full object-cover rounded-lg"
           />
-          <div className="flex flex-col items-center justify-center gap-3 absolute inset-0  w-full h-full bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 backdrop-filter backdrop-blur-lg rounded-lg">
-            <h1 className="text-white hidden sm:block text-center text-xs">
-              {event.name}
-            </h1>
-            <Link to={`/event/${event.id}`}>
-              <button className="flex gap-1 bg-white text-black text-sm px-4 py-1 rounded-2xl justify-center">
-                <span>View Event</span>
+          <Link className="no-underline" to={`/event/${event.id}`}>
+            <div className="flex flex-col items-center justify-center gap-3 absolute inset-0  w-full h-full bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 backdrop-filter backdrop-blur-lg rounded-lg">
+              <h1 className="text-white hidden sm:block text-center text-xs">
+                {event.name}
+              </h1>
+
+              <button className="flex gap-1 bg-white text-black text-sm px-4 py-1 rounded-2xl justify-center ">
+                <span className="no-underline">View Event</span>
                 <svg
                   className="w-5 h-5 shrink-0 justify-center"
                   viewBox="0 0 24 24"
@@ -43,8 +43,8 @@ const EventCard = ({ event, isLoading }) => {
                   />
                 </svg>
               </button>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       )}
       <div className="w-[80%] ml-2">
@@ -52,10 +52,10 @@ const EventCard = ({ event, isLoading }) => {
           <div className="bg-gray-200 h-4 rounded-md animate-pulse w-4/5"></div>
         ) : (
           <>
-            <h1 className="text-black text-xs sm:hidden block text-center ml-2">
+            <h1 className="text-black text-sm sm:hidden block text-center ml-2">
               {event.name}
             </h1>
-            <h1 className="text-black text-xs hidden sm:block">
+            <h1 className="text-black text-sm hidden sm:block">
               {event.description}
             </h1>
           </>

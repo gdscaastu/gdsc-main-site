@@ -2,7 +2,7 @@ import React from "react";
 
 const AndroidBox = () => {
   return (
-    <div className="container ml-4 w-full p-4 flex flex-row justify-between gap-5">
+    <div className="container ml-4 w-full p-4 flex flex-row justify-between gap-4">
       <div>
         <div className="flex w-16 h-16 bg-green-500 rounded-lg justify-center">
           <svg

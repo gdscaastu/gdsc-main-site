@@ -37,7 +37,7 @@ const EventDetail = ({ onClose, id }) => {
   // render loading skeleton while loading is true
   if (loading) {
     return (
-      <div className="flex flex-col w-[80%] gap-10 dark:text-black">
+      <div className="flex flex-col w-[80%] gap-5 border dark:text-black">
         <div className="animate-pulse">
           <h1 className="text-blue-500 text-lg">Loading...</h1>
         </div>
@@ -139,7 +139,7 @@ const EventDetail = ({ onClose, id }) => {
               />
             </div>
           </div>
-          <div className="h-full w-7/12 flex flex-col gap-5">
+          <div className="h-full w-7/12 flex flex-col gap-2 ml-5">
             <div>
               <h1 className="text-2xl font-bold">{event.name}</h1>
             </div>
@@ -196,9 +196,9 @@ const EventDetail = ({ onClose, id }) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-3">
               <div>
-                <h1 className="text-lg font-bold text-center">
+                <h1 className="text-xl font-bold text-center">
                   About This Event
                 </h1>
               </div>

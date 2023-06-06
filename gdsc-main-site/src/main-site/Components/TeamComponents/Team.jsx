@@ -3,6 +3,7 @@ import "../../../index.css";
 import axios from "axios";
 import MemberCard from "./MemberCard";
 import { Accordion } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const DataContext = createContext();
 
@@ -39,7 +40,7 @@ const CardList = () => {
   });
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <div className="mb-4">
         <h5 className="text-left team-header">Meet our team</h5>
         <p npmclassName="text-left text-muted">

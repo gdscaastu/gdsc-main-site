@@ -3,7 +3,7 @@ import axios from "axios";
 import Project from "./Project";
 import Spinner from "react-bootstrap/Spinner";
 import "../../../index.css";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {

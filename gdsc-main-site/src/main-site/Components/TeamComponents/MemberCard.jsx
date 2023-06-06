@@ -2,6 +2,7 @@ import react from "react";
 import Card from "react-bootstrap/Card";
 import user from "../../../assets/Sample_User_Icon.png";
 import "../../../index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const MemberCard = (props) => {
   return (

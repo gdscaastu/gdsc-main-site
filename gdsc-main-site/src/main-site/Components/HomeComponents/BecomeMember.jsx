@@ -3,7 +3,7 @@ import React from "react";
 const BecomeMemeber = () => {
   return (
     <div className="w-full lg:w-1/2">
-      <div className="w-full p-8 bg-white rounded-lg  flex flex-col justify-between gap-5">
+      <div className="w-full p-8 bg-white rounded-lg  flex flex-col justify-between gap-2">
         <div>
           <h1 className="text-black md:text-4xl text-2xl font-bold">
             Developer Student Club Addis Ababa Science and Technology

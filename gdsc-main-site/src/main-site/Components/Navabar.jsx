@@ -10,10 +10,10 @@ const MainNavbar = () => {
     setIsopen(!isOpen);
   };
   return (
-    <nav className="lg:w-[80%] w-full bg-white dark:bg-white">
+    <nav className="lg:w-[80%] w-full bg-white dark:bg-white h-fit">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 dark:bg-white ">
         <a href="" className="flex items-center">
-          <img src={logo} className="lg:h-16 h-[45px] mr-3" alt="" />
+          <img src={logo} className="lg:h-24 h-[45px] mr-3" alt="" />
         </a>
         <button
           data-collapse-toggle="navbar-default"
@@ -44,7 +44,7 @@ const MainNavbar = () => {
             <li>
               <NavLink
                 to="/"
-                className={`block py-2 pl-3 pr-4 rounded md:p-0 ${
+                className={`block py-2 pl-3 pr-4 rounded md:p-0 no-underline text-lg ${
                   currentPath === "/"
                     ? "text-blue-700 bg-transparent"
                     : "text-black hover:text-gray-500"
@@ -56,7 +56,7 @@ const MainNavbar = () => {
             <li>
               <NavLink
                 to="/projects"
-                className={`block py-2 pl-3 pr-4 dark:bg-white rounded md:p-0 ${
+                className={`block py-2 pl-3 pr-4 dark:bg-white rounded md:p-0 no-underline text-lg ${
                   currentPath === "/projects"
                     ? "text-blue-700 bg-transparent"
                     : "text-black hover:text-gray-500"
@@ -68,7 +68,7 @@ const MainNavbar = () => {
             <li>
               <NavLink
                 to="/team"
-                className={`block py-2 pl-3 pr-4 dark:bg-white rounded md:p-0 ${
+                className={`block py-2 pl-3 pr-4 dark:bg-white rounded md:p-0 no-underline text-lg ${
                   currentPath === "/team"
                     ? "text-blue-700 bg-transparent"
                     : "text-black hover:text-gray-500"
@@ -80,7 +80,7 @@ const MainNavbar = () => {
             <li>
               <NavLink
                 to="/events"
-                className={`block py-2 pl-3 pr-4 dark:bg-white rounded md:p-0 ${
+                className={`block py-2 pl-3 pr-4 dark:bg-white rounded md:p-0 no-underline text-lg ${
                   currentPath === "/events"
                     ? "text-blue-700 bg-transparent"
                     : "text-black hover:text-gray-500"

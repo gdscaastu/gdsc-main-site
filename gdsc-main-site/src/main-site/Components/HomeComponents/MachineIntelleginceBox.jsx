@@ -2,7 +2,7 @@ import React from "react";
 
 const MachineIntelleginceBox = () => {
   return (
-    <div className="container ml-4 w-full p-4 flex flex-row justify-between gap-5">
+    <div className="container ml-4 w-full p-4 flex flex-row justify-between gap-4">
       <div>
         <div className="w-16 h-16 bg-yellow-500 rounded-lg flex justify-center items-center">
           <svg
