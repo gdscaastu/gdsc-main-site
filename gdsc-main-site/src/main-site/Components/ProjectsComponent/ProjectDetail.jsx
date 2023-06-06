@@ -46,9 +46,43 @@ const Projectdetail = () => {
   console.log(contributors);
   if (!project) {
     return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+      <div className="container mt-3">
+  <div
+    style={{
+      width: "100%",
+      height: "40vh",
+    }}
+    className="bg-gray-200"
+  >
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#ccc",
+      }}
+    ></div>
+  </div>
+  <div className="container mt-5">
+  <div
+    style={{
+      marginTop: "20px",
+      textAlign: "left",
+    }}
+    className="container"
+  >
+    <div
+      style={{
+        backgroundColor: "#ccc",
+        height: "100px",
+        width: "100%",
+      }}
+    ></div>
+  </div>
+</div>
+</div>
+
+
+    
     );
   }
 
@@ -58,7 +92,7 @@ const Projectdetail = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container max-w-[90%]">
       <div
         className="container mt-3"
         style={{
@@ -70,7 +104,7 @@ const Projectdetail = () => {
         }}>
         <div
           style={{
-            width: "300px",
+            width: "25%",
             position: "relative",
             left: " 40%",
             top: "88%",
@@ -81,6 +115,7 @@ const Projectdetail = () => {
               color: " #333",
               backgroundColor: "white",
               padding: "15px",
+              textAlign: "center",
             }}>
             {project.name}
           </h6>
@@ -164,7 +199,7 @@ const Projectdetail = () => {
               </a>
             </span>
           </div>
-          <div className="mt-4 mb-5 row">
+          <div className="mt-4 mb-5 flex flex-wrap">
             {imageUrls.map((item) => {
               return (
                 <div className="col-sm-3 mt-3">
@@ -179,7 +214,7 @@ const Projectdetail = () => {
               <div className="mt-5">
                 <h6>Contributors</h6>
               </div>
-              <div className="row ">
+              <div className="flex flex-wrap">
                 {contributors.map((contributer) => {
                   return (
                     <div className="col-sm-4 mt-3 contributors">
@@ -190,10 +225,14 @@ const Projectdetail = () => {
               </div>
             </div>
           ) : (
-            <div>Loading...</div>
+           
+        <div className="sm:w-[80%] sm:h-[100px] w-[80%] h-[150px] relative rounded-md animate-pulse my-5">
+            <div className="bg-gray-200 rounded-lg w-full h-full my-2"></div>
+            <div className="bg-gray-200 rounded-lg w-full h-full my-2"></div>
+       </div>
           )}
 
-          <div className="d-flex justify-content-center">
+          <div className="inset-0 flex items-center justify-center mt-5">
             <a
               style={{
                 backgroundColor: "rgb(14, 14, 14)",
@@ -203,7 +242,7 @@ const Projectdetail = () => {
                 cursor: "pointer",
                 textDecoration: "none",
               }}
-              className="mb-5"
+              className="mb-5 "
               href={`/projects`}>
               Back to Projects
             </a>
@@ -215,7 +254,7 @@ const Projectdetail = () => {
   );
 };
 
-const ProjectDetail = () => {
+const ProjectDetail = ({onClose}) => {
   return (
     <ProjectProvider>
       <Projectdetail />

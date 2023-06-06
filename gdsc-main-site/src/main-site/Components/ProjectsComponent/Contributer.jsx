@@ -10,30 +10,27 @@ const Contributer = ({ contributer }) => {
         width: "18rem",
         boxShadow: "10px 10px 5px 0px rgb(224, 222, 222)",
       }}
-      className="contributer mb-5">
+      className="mx-5 mb-5 ">
       <div className="container">
         <Card.Img
+        className="w-[100%] rounded"
           variant="top"
           src={contributer.image_url ? contributer.image_url : user}
           style={{
             maxHeight: "25vh",
+
           }}
         />
       </div>
       <Card.Body>
-        <Card.Title>{contributer.name}</Card.Title>
-        <Card.Text>
+        <Card.Title className="my-1 p-2">{contributer.name}</Card.Title>
+        <Card.Text className="my-3 p-2">
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
       </Card.Body>
       <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-        }}
-        className="container mb-3">
+        className="container mb-3 flex flex-wrap justify-around">
         <a
           style={{
             color: "red",

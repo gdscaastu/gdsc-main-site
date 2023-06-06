@@ -45,7 +45,7 @@ const ProjectList = () => {
   );
 };
 
-const App = () => {
+const App = ({onClose}) => {
   return (
     <ProjectProvider>
       <ProjectList />
