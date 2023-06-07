@@ -74,7 +74,7 @@ const Event = () => {
             </div>
             <div className="flex gap-2">
               <button
-                onClick={() => handelEditEvent(event.id)}
+                onClick={() => navigate(`/admin/event/edit/${event.id}`)}
                 className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
                 <svg
                   className="w-5 h-5 text-white font-bold dark:text-white flex items-center justify-center "

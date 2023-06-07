@@ -89,8 +89,10 @@ const Projectdetail = () => {
   let imageUrls = [""];
   if (project.image_url) {
     imageUrls = project.image_url.split(";");
+
   }
 
+  const length = imageUrls.length;
   return (
     <div className="container max-w-[90%]">
       <div

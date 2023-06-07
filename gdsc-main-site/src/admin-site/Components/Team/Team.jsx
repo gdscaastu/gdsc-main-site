@@ -19,7 +19,7 @@ const Members = () => {
   }, [year]);
 
   const groupedMembers = members.reduce((groups, member) => {
-    const position = member.position;
+    const position = member.member_type;
     if (!groups[position]) {
       groups[position] = [];
     }
@@ -65,6 +65,8 @@ const Members = () => {
             <option value={2022}>2022 / 2023</option>
             <option value={2023}>2023 / 2024</option>
             <option value={2024}>2024 / 2025</option>
+            <option value={2025}>2025 / 2026</option>
+            <option value={2026}>2026 / 2027</option>
           </select>
         </div>
         {Object.keys(groupedMembers).map(position => (

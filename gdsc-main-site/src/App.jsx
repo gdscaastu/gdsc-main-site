@@ -67,6 +67,7 @@ function App() {
           <Route path="/admin/event" element={<AdminEventPage />} />
           <Route path="/admin/event/new" element={<AddNewEventPage />} />
           <Route path='/admin/event/imageupload/:id' element = {<UploadEventImagePage />} />
+          <Route path='/admin/event/edit/:id' element = {<UpdateEventPage />} />
         </Routes>
   
       

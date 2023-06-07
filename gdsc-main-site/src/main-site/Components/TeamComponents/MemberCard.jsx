@@ -17,7 +17,9 @@ const MemberCard = (props) => {
           variant="top"
           src={props.member.image_url ? props.member.image_url : user}
           style={{
-            maxHeight: "25vh",
+            maxHeight: "30vh",
+            width: "100%",
+            backgroundSize: "cover",
           }}
         />
       </div>

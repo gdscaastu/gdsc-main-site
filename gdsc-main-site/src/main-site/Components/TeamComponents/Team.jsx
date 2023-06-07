@@ -47,7 +47,7 @@ const CardList = () => {
   const groupedByYearAndPosition = {};
 
   Object.keys(groupedByYear).forEach((year) => {
-    groupedByYearAndPosition[year] = groupBy(groupedByYear[year], "position");
+    groupedByYearAndPosition[year] = groupBy(groupedByYear[year], "member_type");
   });
 
   return (
@@ -76,18 +76,18 @@ const CardList = () => {
       <div className=" mx-auto">
         {Object.entries(groupedByYearAndPosition).map(([startYear, team]) => (
           <div  className="">
-            <div className="collapse collapse-arrow container mx-auto">
+            <div className="collapse collapse-arrow container mx-auto ">
                   <input type="radio" name="my-accordion-2" /> 
-                  <div className="collapse-title text-xl font-medium">
+                  <div className="collapse-title text-xl font-medium ">
                   <span>{startYear}</span>/
                   <span>{parseInt(startYear) + 1} year</span>
                   </div>
                   <div className="collapse-content"> 
                   <Accordion.Body
-
-                className="flex flex-wrap mx-3 bg-gray-200">
+                    className="bg-gray-200"
+               >
                 {Object.entries(team).map(([position, members]) => (
-                  <div>
+                  <div >
                     <h4
                       style={{
                         color: "#4486f4",
@@ -96,10 +96,10 @@ const CardList = () => {
                       className="text-left my-3 mx-3">
                       {position}
                     </h4>
-                    <div className="flex">
+                    <div className="flex flex-row flex-wrap mx-3 bg-gray-200">
                       {members.map((member) => {
                         return (
-                          <div className="flex ">
+                          <div  >
                             <MemberCard key={member.id} member={member} isLoading = {isLoading} />
                           </div>
                         );
