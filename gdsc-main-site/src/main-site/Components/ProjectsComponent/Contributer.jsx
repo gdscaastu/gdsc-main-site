@@ -13,20 +13,22 @@ const Contributer = ({ contributer }) => {
       className="mx-5 mb-5 ">
       <div className="container">
         <Card.Img
-        className="w-[100%] rounded"
+        className="rounded object-cover ml-[10%] mt-2"
           variant="top"
           src={contributer.image_url ? contributer.image_url : user}
           style={{
             maxHeight: "25vh",
-
+             alignSelf: "center",
+            
           }}
         />
       </div>
       <Card.Body>
         <Card.Title className="my-1 p-2">{contributer.name}</Card.Title>
         <Card.Text className="my-3 p-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          
+          <p>member status: {contributer.status}</p>
+          <p>member type: {contributer.member_type}</p>
         </Card.Text>
       </Card.Body>
       <div

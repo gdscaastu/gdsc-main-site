@@ -14,11 +14,12 @@ const MemberCard = (props) => {
       className="mb-5 mx-3 bg-white">
       <div className="container">
         <Card.Img
+          className="rounded object-cover ml-[10%] mt-2"
           variant="top"
           src={props.member.image_url ? props.member.image_url : user}
           style={{
             maxHeight: "30vh",
-            width: "100%",
+            maxWidth: "100%",
             backgroundSize: "cover",
           }}
         />

@@ -54,7 +54,7 @@ const UpdateEventForm = () => {
       return;
     }
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         `https://gdsc-main-site.onrender.com/v1/event/${id}`,
         formData,
         {
@@ -173,6 +173,15 @@ const UpdateEventForm = () => {
               >
                 <span className="flex justify-center items-center">
                   Save Changes
+                </span>
+              </button>
+              <button
+              onClick={() => navigate( `/admin/event/imageupload/${id}`)}
+                type="button"
+                className="mr-2  py-1 px-7 rounded-md  text-white font-bold"
+              >
+                <span className="flex justify-center items-cente text-blue-400">
+                  add image
                 </span>
               </button>
             </div>

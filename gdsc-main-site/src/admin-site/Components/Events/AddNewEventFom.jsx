@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import DatePicker from "../Date";
 import TimePickerComponent from "../Time";
-
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { async } from "q";
-
 
 const AddNewEventFom = () => {
   const navigate = useNavigate();
@@ -14,13 +11,12 @@ const AddNewEventFom = () => {
   const [place, setPlace] = useState("");
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const formData = {
       name: title,
-      description: description,
+      description,
       location: place,
       time: selectedTime,
       date: selectedDate,
@@ -88,7 +84,8 @@ const AddNewEventFom = () => {
               Title*
             </label>
             <input
-              placeholder="Event Name"
+              required
+              placeholder="Event Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"

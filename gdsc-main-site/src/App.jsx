@@ -24,7 +24,7 @@ import AddContributorModal from "./admin-site/Components/Project.jsx/AddContribu
 import AddNewProjectPage from "./admin-site/Components/Pages/AddNewProjectPage";
 import UploadImagePage from "./admin-site/Components/Pages/UploadImagePage";
 import UploadSponsorImage from "./admin-site/Components/Pages/UploadSponsorImagePage";
-import Members from "./admin-site/Components/Team/Team";
+import Members from "./admin-site/Components/Team/Team"
 import AdminTeamPage from "./admin-site/Components/Pages/TeamPage";
 import UpdateMemberPage from "./admin-site/Components/Pages/UpdateMemberPage";
 import AddMemberPage from "./admin-site/Components/Pages/AddMemberPPage";
@@ -32,13 +32,15 @@ import UploadMemberImagePage from "./admin-site/Components/Pages/UploadMemberIma
 import AdminEventPage from "./admin-site/Components/Pages/EventPage";
 import UploadEventImagePage from "./admin-site/Components/Pages/UploadEventImagePage";
 function App() {
-  const isAdmin = localStorage.getItem("isAdmin");
+
+  const isAdmin = localStorage.getItem('isAdmin');
+
   return (
     <div className="App dark:bg-white">
       <Router>
-        <div className="lg:w-full h-32 bg-white dark:bg-white shadow-md flex justify-center pb-10 items-center w-full mb-14 z-50 top-0 left-0 fixed">
+        {/* <div className="lg:w-full h-32 bg-white dark:bg-white shadow-md flex justify-center pb-10 items-center w-full mb-14 z-50 top-0 left-0 fixed">
           <MainNavbar />
-        </div>
+        </div> */}
         <Routes>
           {/* client side routing */}
           <Route path="/" exact Component={HomePage} />
@@ -48,6 +50,7 @@ function App() {
           <Route path="/event/:id" Component={EventDetailPage} />
           <Route path="/events" exact Component={EventPage} />
         </Routes>
+
         <Routes>
           {/* admin side routing */}
           <Route exact path="/admin" element={<ProjectPage />} />
@@ -83,15 +86,15 @@ function App() {
           <Route exact path="/admin/team/" element={<AdminTeamPage />} />
           <Route path="/admin/member/edit/:id" element={<UpdateMemberPage />} />
           <Route path="/admin/member/new" element={<AddMemberPage />} />
-          <Route
-            path="/admin/member/imageupload/:id"
-            element={<UploadMemberImagePage />}
-          />
+          <Route path='/admin/member/imageupload/:id' element = {<UploadMemberImagePage />} />
+          <Route path="/admin/event" element={<AdminEventPage />} />
+          <Route path="/admin/event/new" element={<AddNewEventPage />} />
+          <Route path='/admin/event/imageupload/:id' element = {<UploadEventImagePage />} />
+          <Route path='/admin/event/edit/:id' element = {<UpdateEventPage />} />
         </Routes>
-
-        {/* <Route exact path='/admin/member/new' element = {<MemberForm />} /> */}
-        {/* <Route path='/admin/member/edit/:id' element = {<MemberUpdateForm />} /> */}
-        {/* <Route path="/admin/unauthorized" element={<Unauthorized />} /> */}
+  
+      
+       
       </Router>
     </div>
   );
