@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Select from "react-select";
 import DatePicker from "../Date";
 import TimePicker from "../Time";
-import AddContributorModal from "./AddContributorModal";
-
+import AddContributorModal from "./AddContributorModal"
+import { useNavigate } from "react-router";
+import axios from "axios";
+import { async } from "q";
 const AddNewProjectForm = () => {
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
   const [startDate, setstartDate] = useState(null);
   const [endDate, setendDate] = useState(null);
@@ -38,15 +41,15 @@ const AddNewProjectForm = () => {
     setContributor([...Contributor, formData]);
     setLen(Contributor.length);
   };
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const formData = {
       name: projectName,
       description: projectDescription,
       project_link: projectLink,
       status: selectedOption.value,
-      startdate: startDate,
-      enddate: endDate,
+      start_date: startDate,
+      end_date: endDate,
     };
     if (
       !formData.name ||
@@ -58,11 +61,28 @@ const AddNewProjectForm = () => {
       alert("please fill out all fields");
       return;
     }
-    console.log(formData);
-    console.log(Contributor);
+    try{
+      const response = await axios.post("https://gdsc-main-site.onrender.com/v1/project",formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        console.log("Success:", response.data);
+        console.log(response.status);
+        if (response.status === 200) {
+          navigate(`/admin/project/imageupload/${response.data.project.id}`);
+      } else {
+        alert("Something went wrong");
+      }
+    }catch(err){
+      console.log(err);
+    }
+    
+    
   };
 
-  const handleProjectSubmit = (e) => {
+  const handleProjectSubmit = async(e) => {
     e.preventDefault();
     const formData = {
       name: projectName,
@@ -70,25 +90,8 @@ const AddNewProjectForm = () => {
       project_link: projectLink,
       status: selectedOptions.value,
     };
-    fetch("https://gdsc-main-site.onrender.com/v1/project", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-            .eyJpZCI6NiwibmFtZSI6IkdlbWVjaGVzIEFkaXN1IiwiZW1haWwiOiJ3dWJlemVsZWtlQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4NDQ5MDU5MywiZXhwIjoxNjg0NTMzNzkzfQ
-            .IFRkryhvC8sQlPfBc - MG3R9b7clyToUeLzE_ToEkZ5k
-        }`,
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+   
+   
   };
   return (
     <>

@@ -8,7 +8,7 @@ const SingnIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate()
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -24,7 +24,9 @@ const SingnIn = () => {
 
         localStorage.setItem("token", token);
         localStorage.setItem("isAdmin", true);
+
         console.log(localStorage.getItem("token"));
+        navigate('/admin')
       } else {
         setError("Incorrect email or password");
       }
@@ -58,7 +60,7 @@ const SingnIn = () => {
               Your password
             </label>
             <input
-              type="text"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"

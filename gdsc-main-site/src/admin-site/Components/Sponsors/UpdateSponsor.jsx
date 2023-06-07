@@ -1,14 +1,32 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
+import axios from "axios";
 
-const UpdateSponsorForm = ({ id = 1 }) => {
+const UpdateSponsorForm = () => {
+
+  const { id } = useParams();
   const [Sponsor, setSponsor] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(Sponsor);
+    try{
+      const response = await axios.put(`https://gdsc-main-site.onrender.com/v1/sponser/${id}`, Sponsor ,
+    {headers: {  Authorization: `Bearer ${localStorage.getItem('token')}`}}
+    )
+    
+      if (response.status === 200) {
+        navigate('/admin/sponsor');
+      } 
+    }
+    catch(error)  {
+      console.log(error);
+    };
+
   };
   useEffect(() => {
     setLoading(true);
@@ -53,6 +71,7 @@ const UpdateSponsorForm = ({ id = 1 }) => {
             </div>
             <div className="flex justify-between">
               <button
+                onClick={() => navigate("/admin/sponsor")}
                 type="button"
                 className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
                 <span className="flex justify-center items-center">Cancel</span>

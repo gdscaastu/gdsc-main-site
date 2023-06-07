@@ -2,7 +2,8 @@ import React from "react";
 import Navbar from "../Navbar";
 import UpdateProjectForm from "../Project.jsx/UpdateProjectForm";
 import UnauthorizedPage from "./UnauthorizedPage";
-const UpdateProjectPage = () => {
+import UploadImages from "../UploadImages";
+const UploadImagePage = () => {
   if (!(localStorage.getItem('isAdmin'))) {
     return( <UnauthorizedPage />)
   }
@@ -10,10 +11,10 @@ const UpdateProjectPage = () => {
     <div>
       <Navbar />
       <div className="p-10  ml-72">
-        <UpdateProjectForm />
+        <UploadImages />
       </div>
     </div>
   );
 };
 
-export default UpdateProjectPage;
+export default UploadImagePage;

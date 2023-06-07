@@ -1,8 +1,11 @@
 import React from "react";
 import Navbar from "../Navbar";
 import UpdateSponsorForm from "../Sponsors/UpdateSponsor";
-
+import UnauthorizedPage from "./UnauthorizedPage";
 const UpdateSponsorPage = () => {
+  if (!(localStorage.getItem('isAdmin'))) {
+    return( <UnauthorizedPage />)
+  }
   return (
     <div>
       <Navbar />

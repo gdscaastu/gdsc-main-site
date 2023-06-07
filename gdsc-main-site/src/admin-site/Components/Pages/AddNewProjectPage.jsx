@@ -1,8 +1,11 @@
 import React from "react";
 import Navbar from "../Navbar";
 import AddNewProjectForm from "../Project.jsx/AddNewProjectForm";
-
+import UnauthorizedPage from "./UnauthorizedPage";
 const AddNewProjectPage = () => {
+  if (!(localStorage.getItem('isAdmin'))) {
+    return( <UnauthorizedPage />)
+  }
   return (
     <div>
       <Navbar />

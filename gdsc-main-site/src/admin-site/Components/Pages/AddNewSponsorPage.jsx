@@ -1,8 +1,12 @@
 import React from "react";
 import Navbar from "../Navbar";
 import AddNewSponsor from "../Sponsors/AddNewSponsor";
-
+import UnauthorizedPage from "./UnauthorizedPage";
 const AddNewSponsorPage = () => {
+  if (!(localStorage.getItem('isAdmin'))) {
+    return( <UnauthorizedPage />)
+  }
+  
   return (
     <div>
       <Navbar />

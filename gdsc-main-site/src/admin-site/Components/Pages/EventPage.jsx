@@ -1,9 +1,12 @@
 import React from "react";
-
 import Event from "../Events/Event";
 import Navbar from "../Navbar";
+import UnauthorizedPage from "./UnauthorizedPage";
 
 const EventPage = () => {
+  if (!(localStorage.getItem('isAdmin'))) {
+    return( <UnauthorizedPage />)
+  }
   return (
     <div>
       <Navbar />

@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import AddContributorModal from "./AddContributorModal";
-
-const UpdateProjectForm = ({ id = 1 }) => {
+import { useParams } from "react-router";
+import axios from "axios";  // <--- add this line
+import { async } from "q";
+import { useNavigate } from "react-router";
+const UpdateProjectForm = () => {
+  const navigate = useNavigate();
+  const{id} = useParams();
   const [project, setProject] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -35,27 +40,46 @@ const UpdateProjectForm = ({ id = 1 }) => {
     setLen(Contributor.length);
     console.log(Contributor);
   };
-  const submit = (e) => {
+  const submit = async(e) => {
     e.preventDefault();
     const formData = {
       name: projectName,
       description: projectDescription,
       project_link: projectLink,
-      type: selectedOptions.value,
+      status: selectedOptions.value,
     };
-    if (
-      !formData.name ||
-      !formData.description ||
-      !formData.project_link ||
-      !formData.type
-    ) {
-      console.error("Form data is invalid");
-      alert("please fill out all fields");
-      return;
-    }
+    // if (
+    //   !formData.name ||
+    //   !formData.description ||
+    //   !formData.project_link ||
+    //   !formData.type
+    // ) {
+    //   console.error("Form data is invalid");
+    //   alert("please fill out all fields");
+    //   return;
+    // }
     console.log(formData);
     console.log(Contributor);
-    // Send the request to the API with the valid form data
+
+    try {
+      const response = await axios.put(`https://gdsc-main-site.onrender.com/v1/project/${id}`, formData ,
+      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      );
+
+      console.log(response.data)
+      console.log(response.status)
+      if (response.status === 200) {
+        
+        navigate('/admin/project');
+
+    } else {
+      setError('An error occurred, please try again later');
+}
+    } catch (err) {
+      console.error(err, error);
+    }
+
+    // Sent the request to the API with the valid form data
   };
 
   const handleProjectSubmit = (e) => {
@@ -66,15 +90,11 @@ const UpdateProjectForm = ({ id = 1 }) => {
       project_link: projectLink,
       type: selectedOptions.value,
     };
-    fetch("https://gdsc-main-site.onrender.com/v1/project", {
+    fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-            .eyJpZCI6NiwibmFtZSI6IkdlbWVjaGVzIEFkaXN1IiwiZW1haWwiOiJ3dWJlemVsZWtlQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4NDQ5MDU5MywiZXhwIjoxNjg0NTMzNzkzfQ
-            .IFRkryhvC8sQlPfBc - MG3R9b7clyToUeLzE_ToEkZ5k
-        }`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify(formData),
     })
@@ -87,20 +107,46 @@ const UpdateProjectForm = ({ id = 1 }) => {
       });
   };
 
+
   useEffect(() => {
-    fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`)
-      .then((response) => response.json())
-      .then((data) => setProject(data))
-      .catch((error) => console.error(error));
-    setProjectDescription(project.description);
-    setProjectLink(project.project_link);
-    setProjectName(project.name);
-    fetch(`https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`)
-      .then((response) => response.json())
-      .then((data) => setContributor(data))
-      .catch((error) => console.error(error));
-    console.log(Contributor);
+
+    const fetchData = async () => {
+      const result = await axios.get(`https://gdsc-main-site.onrender.com/v1/project/${id}`);
+      console.log(result.data);
+      setProject(result.data);
+      setProjectName(result.data.name)
+      setProjectDescription(result.data.description)
+      setProjectLink(result.data?.project_link)
+      setStartDate(result.data.start_date)
+      setEndDate(result.data?.end_date)
+      setStatus(result.data.status)
+    };
+    
+    const fetchContributors = async () => {
+      const response = await fetch(`https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`);
+      const data = await response.json();
+      setContributor(data);
+    };
+
+    fetchData();
+    fetchContributors();
+
   }, [id]);
+
+    // useEffect(() => {
+    //   fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`)
+    //     .then((response) => response.json())
+    //     .then((data) => setProject(data))
+    //     .catch((error) => console.error(error));
+    //   setProjectDescription(project.description);
+    //   setProjectLink(project.project_link);
+    //   setProjectName(project.name);
+    //   fetch(`https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`)
+    //     .then((response) => response.json())
+    //     .then((data) => setContributor(data))
+    //     .catch((error) => console.error(error));
+    //   console.log(Contributor);
+    // }, [id]);
   return (
     <>
       <AddContributorModal
@@ -151,9 +197,10 @@ const UpdateProjectForm = ({ id = 1 }) => {
                   options={[
                     { value: "Started", label: "Started" },
                     {
-                      value: "Mobile App Development",
-                      label: "Mobile App Development",
+                      value: "Completed",
+                      label: "Completed",
                     },
+                    { value: "in progress", label: "in progress" },
                   ]}
                   value={selectedOptions}
                   onChange={(options) => setSelectedOptions(options)}

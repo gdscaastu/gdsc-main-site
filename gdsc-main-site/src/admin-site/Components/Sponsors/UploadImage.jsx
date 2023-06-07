@@ -17,7 +17,7 @@ const UploadImages = (props) => {
       console.log(selectedFiles[i]);
     }
     try {
-      const response = await axios.post(`https://gdsc-main-site.onrender.com/v1/project/upload-image/${id}`, formData, {
+      const response = await axios.post(`https://gdsc-main-site.onrender.com/v1/sponser/upload-image/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}` ,
           'Content-Type': 'multipart/form-data'

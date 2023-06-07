@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router";
 const LoadingSkeleton = () => {
   return (
     <div className="animate-pulse space-y-4">
@@ -11,6 +11,7 @@ const LoadingSkeleton = () => {
 };
 
 const Sponsors = () => {
+  const navigate = useNavigate();
   const [Sponsor, setSponsor] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +20,7 @@ const Sponsors = () => {
   };
 
   const handelEditSponsor = (id) => {
-    console.log(id);
+      navigate(`/admin/sponsor/edit/${id}`);
   };
 
   useEffect(() => {
@@ -32,15 +33,15 @@ const Sponsors = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const handelEditbutton = (id) => {
-    console.log(id);
+  const handelEditbutton = () => {
+    navigate(`/admin/sponsor/new/`);
   };
 
   return (
     <div>
       <div className=" mb-6 flex h-12 justify-between shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2.5 px-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
         <h1 className="text-lg items-center">Sponsors</h1>
-        <button className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md">
+        <button onClick={()=> handelEditbutton()} className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md">
           <span className="text-white  dark:text-white flex items-center justify-center text-sm">
             Add
           </span>
