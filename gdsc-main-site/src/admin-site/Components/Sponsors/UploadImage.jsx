@@ -10,28 +10,32 @@ const UploadImages = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const add = async() => {
+  const add = async () => {
     const formData = new FormData();
     for (let i = 0; i < selectedFiles.length; i++) {
       formData.append("image", selectedFiles[i]);
       console.log(selectedFiles[i]);
     }
     try {
-      const response = await axios.post(`https://gdsc-main-site.onrender.com/v1/sponser/upload-image/${id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}` ,
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.post(
+        `https://gdsc-main-site.onrender.com/v1/sponser/upload-image/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
+      );
       console.log(response.data);
       if (response.status === 200) {
         navigate(`/admin/project`);
-    } else {
-      alert("Something went wrong");
-    }
+      } else {
+        alert("Something went wrong");
+      }
     } catch (error) {
       console.error(error);
-  };
+    }
   };
   return (
     <div className="mb-4 flex flex-col ">
