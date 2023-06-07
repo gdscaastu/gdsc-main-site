@@ -127,10 +127,10 @@ const EventDetail = ({ onClose, id }) => {
             </div>
           ))}
         </div>
-        <div className="w-4/5 h-4/5 flex gap-[70px]">
+        <div className="w-4/5 h-[85%] flex gap-[70px]">
           <div
             style={{ backgroundColor: "#f1f1f1" }}
-            className="h-full w-7/12  bg-gray-200 relative">
+            className="h-full w-full  bg-gray-200 relative">
             <div className="absolute w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-300 shadow-right-bottom">
               <img
                 className="w-full h-full object-cover rounded-md"

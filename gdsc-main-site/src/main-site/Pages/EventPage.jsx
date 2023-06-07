@@ -18,7 +18,7 @@ const EventPage = () => {
   }, []);
 
   return (
-    <div className="w-full flex flex-col gap-10">
+    <div className="w-full flex flex-col gap-10 mt-28">
       <div className="lg:w-full bg-white border-gray-200 dark:bg-white shadow-md flex justify-center w-full mb-2"></div>
       <div className="w-[100%] justify-center flex  ">
         <div className="flex flex-col w-full sm:w-[80%] gap-12 m-4 sm:m-0">

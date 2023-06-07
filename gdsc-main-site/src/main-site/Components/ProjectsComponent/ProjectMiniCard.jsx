@@ -2,6 +2,7 @@ import React from "react";
 import projectImage from "../../../assets/project-image.jpg";
 import "../../../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 const ProjectMiniCard = ({ image }) => {
   return (
     <div>
