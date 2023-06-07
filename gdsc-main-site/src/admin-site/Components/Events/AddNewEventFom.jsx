@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import DatePicker from "../Date";
 import TimePickerComponent from "../Time";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddNewEventFom = () => {
   const [title, setTitle] = useState("");
@@ -8,16 +10,32 @@ const AddNewEventFom = () => {
   const [place, setPlace] = useState("");
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const formData = {
-      title,
+      name: title,
       description,
-      place,
-      selectedTime,
-      selectedDate,
+      location: place,
+      time: selectedTime,
+      date: selectedDate,
     };
+
+    
+    try {
+      const response = await axios.post('https://gdsc-main-site.onrender.com/v1/event', formData , 
+      {headers: {  Authorization: `Bearer ${localStorage.getItem('token')}`}}
+
+      );
+      if (response.status === 200) {
+        console.log(response.data);
+        navigate(`/admin/event/imageUpload/${response.data.event.id}`);
+    } 
+    } catch (error) {
+      console.log(error);
+    }
+  
     console.log(formData);
   };
 
@@ -35,6 +53,7 @@ const AddNewEventFom = () => {
               Title*
             </label>
             <input
+              required
               placeholder="Event Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -46,6 +65,7 @@ const AddNewEventFom = () => {
               Description*
             </label>
             <textarea
+              required
               id="message"
               rows={4}
               className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -60,7 +80,8 @@ const AddNewEventFom = () => {
               Place:
             </label>
             <input
-              placeholder="Event Name"
+              required
+              placeholder="Event place"
               value={place}
               onChange={(e) => setPlace(e.target.value)}
               className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -74,13 +95,13 @@ const AddNewEventFom = () => {
             </div>
             <div className="w-[90%] flex justify-between">
               <div className="w-[25%]">
-                <DatePicker setSelectedDate={setSelectedDate} />
+                <DatePicker required setSelectedDate={setSelectedDate} />
               </div>
               <div className="w-[40%] flex gap-10 justify-between">
                 <label className="flex justify-center items-center" htmlFor="">
                   Time:
                 </label>
-                <TimePickerComponent setSelectedTime={setSelectedTime} />
+                <TimePickerComponent required setSelectedTime={setSelectedTime} />
               </div>
             </div>
           </div>

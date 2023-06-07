@@ -1,9 +1,8 @@
 import React from "react";
-import Event from "../Events/Event";
 import Navbar from "../Navbar";
 import UnauthorizedPage from "./UnauthorizedPage";
-
-const AdminEventPage = () => {
+import UploadEventImage from "../Events/UploadEventImage";
+const UploadEventImagePage = () => {
   if (!(localStorage.getItem('isAdmin'))) {
     return( <UnauthorizedPage />)
   }
@@ -11,10 +10,10 @@ const AdminEventPage = () => {
     <div>
       <Navbar />
       <div className="p-10  ml-72">
-        <Event />
+        <UploadEventImage />
       </div>
     </div>
   );
 };
 
-export default AdminEventPage;
+export default UploadEventImagePage;

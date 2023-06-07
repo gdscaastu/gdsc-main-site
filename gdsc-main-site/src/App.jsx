@@ -25,13 +25,17 @@ import AddContributorModal from "./admin-site/Components/Project.jsx/AddContribu
 import AddNewProjectPage from "./admin-site/Components/Pages/AddNewProjectPage";
 import UploadImagePage from "./admin-site/Components/Pages/UploadImagePage";
 import UploadSponsorImage from "./admin-site/Components/Pages/UploadSponsorImagePage";
- import Members from "./admin-site/Components/Team/Team"
+import Members from "./admin-site/Components/Team/Team"
 import AdminTeamPage from "./admin-site/Components/Pages/TeamPage";
 import UpdateMemberPage from "./admin-site/Components/Pages/UpdateMemberPage";
 import AddMemberPage from "./admin-site/Components/Pages/AddMemberPPage";
 import UploadMemberImagePage from "./admin-site/Components/Pages/UploadMemberImagePage";
+import AdminEventPage from "./admin-site/Components/Pages/EventPage";
+import UploadEventImagePage from "./admin-site/Components/Pages/UploadEventImagePage";
 function App() {
+
   const isAdmin = localStorage.getItem('isAdmin');
+
   return (
     <div className="App dark:bg-white">
       <Router>
@@ -60,17 +64,12 @@ function App() {
           <Route path="/admin/member/edit/:id" element={<UpdateMemberPage />} />
           <Route path="/admin/member/new" element={<AddMemberPage />} />
           <Route path='/admin/member/imageupload/:id' element = {<UploadMemberImagePage />} />
-          
-           
+          <Route path="/admin/event" element={<AdminEventPage />} />
+          <Route path="/admin/event/new" element={<AddNewEventPage />} />
+          <Route path='/admin/event/imageupload/:id' element = {<UploadEventImagePage />} />
         </Routes>
   
-          
-            
-          
-          
-          {/* <Route exact path='/admin/member/new' element = {<MemberForm />} /> */}
-          {/* <Route path='/admin/member/edit/:id' element = {<MemberUpdateForm />} /> */}
-          {/* <Route path="/admin/unauthorized" element={<Unauthorized />} /> */}
+      
        
       </Router>
     </div>
