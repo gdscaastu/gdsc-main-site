@@ -36,9 +36,7 @@ function App() {
   return (
     <div className="App dark:bg-white">
       <Router>
-        <div className="lg:w-full h-32 bg-white dark:bg-white shadow-md flex justify-center pb-10 items-center w-full mb-14 z-50 top-0 left-0 fixed">
-          <MainNavbar />
-        </div>
+       
         <Routes>
           {/* client side routing */}
           <Route path="/" exact Component={HomePage} />
@@ -87,11 +85,14 @@ function App() {
             path="/admin/member/imageupload/:id"
             element={<UploadMemberImagePage />}
           />
+
+          <Route exact path="/admin/event" element={<AdminEventPage />} />
+          <Route exact path="/admin/event/new" element={<AddNewEventPage />} />
+          <Route path="/admin/event/edit/:id" element={<UpdateEventPage />} />
+          <Route  path="/admin/event/imageupload/:id" element={<UploadEventImagePage />} />   
         </Routes>
 
-        {/* <Route exact path='/admin/member/new' element = {<MemberForm />} /> */}
-        {/* <Route path='/admin/member/edit/:id' element = {<MemberUpdateForm />} /> */}
-        {/* <Route path="/admin/unauthorized" element={<Unauthorized />} /> */}
+    
       </Router>
     </div>
   );
