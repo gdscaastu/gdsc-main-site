@@ -12,7 +12,7 @@ const LoadingSkeleton = () => {
 
 const AdminProject = () => {
   const navigate = useNavigate();
-  const [project, setproject] = useState([]);
+  const [projects, setproject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const handelDeleteProject = (id) => {
@@ -63,11 +63,11 @@ const AdminProject = () => {
       {isLoading ? (
         <LoadingSkeleton />
       ) : (
-        project.map((project, index) => (
+        projects.map((project, index) => (
           <div
             key={project.id}
             className={`flex py-2 px-5 border-l border-black justify-between border-t border-r ${
-              index === project.length - 1 ? "border-b" : ""
+              index === projects.length - 1 ? "border-b" : ""
             } `}>
             <div>
               <h1 className="">{project.name}</h1>
