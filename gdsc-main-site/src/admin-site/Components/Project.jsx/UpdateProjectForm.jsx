@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import AddContributorModal from "./AddContributorModal";
 import { useParams } from "react-router";
-import axios from "axios";  // <--- add this line
+import axios from "axios"; // <--- add this line
 import { async } from "q";
 import { useNavigate } from "react-router";
 const UpdateProjectForm = () => {
   const navigate = useNavigate();
-  const{id} = useParams();
+  const { id } = useParams();
   const [project, setProject] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ const UpdateProjectForm = () => {
     setLen(Contributor.length);
     console.log(Contributor);
   };
-  const submit = async(e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const formData = {
       name: projectName,
@@ -62,19 +62,21 @@ const UpdateProjectForm = () => {
     console.log(Contributor);
 
     try {
-      const response = await axios.put(`https://gdsc-main-site.onrender.com/v1/project/${id}`, formData ,
-      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      const response = await axios.put(
+        `https://gdsc-main-site.onrender.com/v1/project/${id}`,
+        formData,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
       );
 
-      console.log(response.data)
-      console.log(response.status)
+      console.log(response.data);
+      console.log(response.status);
       if (response.status === 200) {
-        
-        navigate('/admin/project');
-
-    } else {
-      setError('An error occurred, please try again later');
-}
+        navigate("/admin/project");
+      } else {
+        setError("An error occurred, please try again later");
+      }
     } catch (err) {
       console.error(err, error);
     }
@@ -94,7 +96,7 @@ const UpdateProjectForm = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(formData),
     })
@@ -107,46 +109,47 @@ const UpdateProjectForm = () => {
       });
   };
 
-
   useEffect(() => {
-
     const fetchData = async () => {
-      const result = await axios.get(`https://gdsc-main-site.onrender.com/v1/project/${id}`);
+      const result = await axios.get(
+        `https://gdsc-main-site.onrender.com/v1/project/${id}`
+      );
       console.log(result.data);
       setProject(result.data);
-      setProjectName(result.data.name)
-      setProjectDescription(result.data.description)
-      setProjectLink(result.data?.project_link)
-      setStartDate(result.data.start_date)
-      setEndDate(result.data?.end_date)
-      setStatus(result.data.status)
+      setProjectName(result.data.name);
+      setProjectDescription(result.data.description);
+      setProjectLink(result.data?.project_link);
+      setStartDate(result.data.start_date);
+      setEndDate(result.data?.end_date);
+      setStatus(result.data.status);
     };
-    
+
     const fetchContributors = async () => {
-      const response = await fetch(`https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`);
+      const response = await fetch(
+        `https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`
+      );
       const data = await response.json();
       setContributor(data);
     };
 
     fetchData();
     fetchContributors();
-
   }, [id]);
 
-    // useEffect(() => {
-    //   fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`)
-    //     .then((response) => response.json())
-    //     .then((data) => setProject(data))
-    //     .catch((error) => console.error(error));
-    //   setProjectDescription(project.description);
-    //   setProjectLink(project.project_link);
-    //   setProjectName(project.name);
-    //   fetch(`https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`)
-    //     .then((response) => response.json())
-    //     .then((data) => setContributor(data))
-    //     .catch((error) => console.error(error));
-    //   console.log(Contributor);
-    // }, [id]);
+  // useEffect(() => {
+  //   fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`)
+  //     .then((response) => response.json())
+  //     .then((data) => setProject(data))
+  //     .catch((error) => console.error(error));
+  //   setProjectDescription(project.description);
+  //   setProjectLink(project.project_link);
+  //   setProjectName(project.name);
+  //   fetch(`https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`)
+  //     .then((response) => response.json())
+  //     .then((data) => setContributor(data))
+  //     .catch((error) => console.error(error));
+  //   console.log(Contributor);
+  // }, [id]);
   return (
     <>
       <AddContributorModal
@@ -225,7 +228,8 @@ const UpdateProjectForm = () => {
               <button
                 onClick={toggleAddModal}
                 type="button"
-                className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md">
+                className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md"
+              >
                 <span className="text-white  dark:text-white flex items-center justify-center text-sm">
                   Add
                 </span>
@@ -234,7 +238,8 @@ const UpdateProjectForm = () => {
                   className="h-3 w-3 text-white font-bold dark:text-white flex items-center justify-center "
                   fill="#000"
                   viewBox="0 0 24 24"
-                  stroke="currentColor">
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -250,19 +255,22 @@ const UpdateProjectForm = () => {
                   <div
                     className={`flex justify-between border-black border-t border-l border-r  px-5 py-3 ${
                       index === Contributor.length - 1 ? "border-b" : ""
-                    }`}>
+                    }`}
+                  >
                     <div>
                       <h1 className="">{contributor.name}</h1>
                     </div>
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleDeleteContributor(index)}
-                        className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
+                        className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1"
+                      >
                         <svg
                           className="w-5 h-5"
                           viewBox="0 0 24 24"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           <path
                             d="M10 12V17"
                             stroke="#fff"
@@ -311,7 +319,8 @@ const UpdateProjectForm = () => {
               </button>
               <button
                 type="submit"
-                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold">
+                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold"
+              >
                 <span className="flex justify-center items-center">
                   Save Changes
                 </span>

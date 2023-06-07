@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import DatePicker from "../Date";
 import TimePickerComponent from "../Time";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { async } from "q";
+
 
 const AddNewEventFom = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [place, setPlace] = useState("");
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  const navigate = useNavigate();
+  
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       name: title,
-      description,
+      description: description,
       location: place,
       time: selectedTime,
       date: selectedDate,
@@ -37,6 +41,37 @@ const AddNewEventFom = () => {
     }
   
     console.log(formData);
+    if (
+      !formData.name ||
+      !formData.description ||
+      !formData.project_link ||
+      !formData.status
+    ) {
+      console.error("Form data is invalid");
+      alert("please fill out all fields");
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "https://gdsc-main-site.onrender.com/v1/event",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log("Success:", response.data);
+      console.log(response.status);
+      if (response.status === 200) {
+        navigate(`/admin/event/imageupload/${response.data.event.id}`);
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -53,8 +88,7 @@ const AddNewEventFom = () => {
               Title*
             </label>
             <input
-              required
-              placeholder="Event Title"
+              placeholder="Event Name"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-[90%] shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -112,7 +146,8 @@ const AddNewEventFom = () => {
             </button>
             <button
               type="submit"
-              className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold">
+              className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold"
+            >
               <span className="flex justify-center items-center">
                 Save Changes
               </span>

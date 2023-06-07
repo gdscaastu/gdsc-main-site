@@ -3,8 +3,14 @@ import DatePicker from "../Date";
 import TimePickerComponent from "../Time";
 import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
+import { useParams } from "react-router";
+import axios from "axios"; // <--- add this line
+import { async } from "q";
+import { useNavigate } from "react-router";
 
-const UpdateEventForm = ({ id = 1 }) => {
+const UpdateEventForm = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [event, setEvent] = useState(null); // Replace with the date value from the API response
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -25,11 +31,49 @@ const UpdateEventForm = ({ id = 1 }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = {
+      name: event.name,
+      description: event.description,
+      location: event.location,
+      time: selectedTime,
+      date: selectedDate,
+    };
 
     // Submit the event object to the server
     console.log(event);
+    if (
+      !formData.name ||
+      !formData.description ||
+      !formData.location ||
+      !formData.date
+    ) {
+      console.error("Form data is invalid");
+      alert("please fill out all fields");
+      return;
+    }
+    try {
+      const response = await axios.post(
+        `https://gdsc-main-site.onrender.com/v1/event/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log("Success:", response.data);
+      console.log(response.status);
+      if (response.status === 200) {
+        navigate("/admin/event");
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const validateFields = () => {
@@ -110,7 +154,8 @@ const UpdateEventForm = ({ id = 1 }) => {
                 <div className="w-[40%] flex gap-10 justify-between">
                   <label
                     className="flex justify-center items-center"
-                    htmlFor="">
+                    htmlFor=""
+                  >
                     Time:
                   </label>
                   <TimePickerComponent setSelectedTime={handleTimeChange} />
@@ -124,7 +169,8 @@ const UpdateEventForm = ({ id = 1 }) => {
               </button>
               <button
                 type="submit"
-                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold">
+                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold"
+              >
                 <span className="flex justify-center items-center">
                   Save Changes
                 </span>
