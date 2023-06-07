@@ -3,7 +3,6 @@ import Projects from "../src/main-site/Components/ProjectsComponent/Projects";
 import ClintProjectPage from "./main-site/Pages/ClientprojectPage";
 import ProjectDetail from "../src/main-site/Components/ProjectsComponent/ProjectDetail";
 import HomePage from "./main-site/Pages/HomePage";
-import Team from "../src/main-site/Components/TeamComponents/Team";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainNavbar from "./main-site/Components/Navabar";
 import Footer from "./main-site/Components/Footer";
@@ -26,13 +25,18 @@ import AddContributorModal from "./admin-site/Components/Project.jsx/AddContribu
 import AddNewProjectPage from "./admin-site/Components/Pages/AddNewProjectPage";
 import UploadImagePage from "./admin-site/Components/Pages/UploadImagePage";
 import UploadSponsorImage from "./admin-site/Components/Pages/UploadSponsorImagePage";
+ import Members from "./admin-site/Components/Team/Team"
+import AdminTeamPage from "./admin-site/Components/Pages/TeamPage";
+import UpdateMemberPage from "./admin-site/Components/Pages/UpdateMemberPage";
+import AddMemberPage from "./admin-site/Components/Pages/AddMemberPPage";
+import UploadMemberImagePage from "./admin-site/Components/Pages/UploadMemberImagePage";
 function App() {
   const isAdmin = localStorage.getItem('isAdmin');
   return (
     <div className="App dark:bg-white">
       <Router>
         <Routes>
-        
+        {/* client side routing */}
           <Route path="/" exact Component={HomePage} />
           <Route path="/projects" exact Component={ClintProjectPage} />
           <Route path="/team" exact Component={TeamPage} />
@@ -40,6 +44,8 @@ function App() {
           <Route path="/event/:id" Component={EventDetailPage} />
           <Route path="/events" exact Component={EventPage} />
 
+
+        {/* admin side routing */}
           <Route exact path="/admin" element={<ProjectPage />} />
           <Route exact path="/admin/login" element={<SingnIn  />} />
           <Route exact path="/admin/project" element={<ProjectPage />} />  
@@ -50,8 +56,10 @@ function App() {
           <Route exact path="/admin/sponsor" element={<SponsorPage  />} />
           <Route exact path="/admin/sponsor/new" element={<AddNewSponsorPage  />} />
           <Route path="/admin/sponsor/edit/:id" element={<UpdateSponsorPage />} />
-          <Route exact path='/admin/team/' element = {<Team />} />
-          
+          <Route exact path='/admin/team/' element = {<AdminTeamPage />} />
+          <Route path="/admin/member/edit/:id" element={<UpdateMemberPage />} />
+          <Route path="/admin/member/new" element={<AddMemberPage />} />
+          <Route path='/admin/member/imageupload/:id' element = {<UploadMemberImagePage />} />
           
            
         </Routes>
