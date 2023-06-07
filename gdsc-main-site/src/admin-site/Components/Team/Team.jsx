@@ -52,16 +52,19 @@ const Members = () => {
           </svg>
         </button>
       </div>
-        <div className="mb-4 w-full">
+        <div className="mb-4 w-[55vw]">
           <select
             id="year"
             className = 'border border-gray-400 p-2 w-full px-4 py-2 rounded-md w-[50vw]'
             value={year}
             onChange={e => setYear(e.target.value)}
           >
+            <option value={2019}>2019 / 2020</option>
             <option value={2020}>2020 / 2021</option>
             <option value={2021}>2021 / 2022</option>
             <option value={2022}>2022 / 2023</option>
+            <option value={2023}>2023 / 2024</option>
+            <option value={2024}>2024 / 2025</option>
           </select>
         </div>
         {Object.keys(groupedMembers).map(position => (

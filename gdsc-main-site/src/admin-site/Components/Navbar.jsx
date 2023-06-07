@@ -29,10 +29,10 @@ const Navbar = () => {
         <p>Admin User</p>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="block py-2 px-6">Projects</div>
-        <div className="block py-2 px-6 ">Teams</div>
-        <div className="block py-2 px-6 ">Events</div>
-        <div className="block py-2 px-6 ">Sponsors</div>
+        <div  className="block py-2 px-6 cursor-pointer"><a href="/admin/project">Projects</a></div>
+        <div className="block py-2 px-6 "><a href="/admin/team">Teams</a></div>
+        <div className="block py-2 px-6 "><a href="/admin/event">Events</a></div>
+        <div className="block py-2 px-6 "><a href="/admin/sponsor">Sponsors</a></div>
       </div>
       <div className="py-2 px-4 flex justify-center absolute bottom-0 pb-11 gap-2">
         <svg
