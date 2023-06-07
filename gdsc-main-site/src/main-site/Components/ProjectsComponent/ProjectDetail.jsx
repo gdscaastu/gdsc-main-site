@@ -58,7 +58,7 @@ const Projectdetail = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container mt-32">
       <div
         className="container mt-3"
         style={{

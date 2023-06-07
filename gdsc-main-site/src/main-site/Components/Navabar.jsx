@@ -10,8 +10,8 @@ const MainNavbar = () => {
     setIsopen(!isOpen);
   };
   return (
-    <nav className="lg:w-[80%] w-full bg-white dark:bg-white h-fit">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 dark:bg-white ">
+    <nav className="lg:w-[80%] w-full bg-white dark:bg-white h-full items-center pb-10 z-50">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pb-10 dark:bg-white ">
         <a href="" className="flex items-center">
           <img src={logo} className="lg:h-24 h-[45px] mr-3" alt="" />
         </a>
@@ -37,7 +37,7 @@ const MainNavbar = () => {
           </svg>
         </button>
         <div
-          className={`w-full md:block md:w-auto dark:bg-white
+          className={`w-full md:block md:w-auto dark:bg-white h-full z-50
            ${isOpen ? "block transition duration-300 ease-in-out" : "hidden"}`}
           id="navbar-default">
           <ul className="font-medium flex dark:bg-white flex-col p-4 md:p-0 mt-4  rounded-lg bg-white md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">

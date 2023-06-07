@@ -32,7 +32,7 @@ const ProjectList = () => {
   console.log(projects);
 
   return (
-    <div className="container flex flex-row flex-wrap ">
+    <div className="container flex flex-row flex-wrap mt-32">
       {projects.map((project) => (
         <Project
           id={project.id}
