@@ -130,7 +130,7 @@ const EventDetail = ({ onClose, id }) => {
             </div>
           ))}
         </div>
-        <div className="w-[85%] h-[85%] flex gap-[70px]">
+        <div className="w-[90%] h-[85%] flex gap-[70px]">
           <div className="h-full w-11/12  bg-gray-200 relative">
             <div className="absolute w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-300 shadow-right-bottom">
               <img
@@ -140,14 +140,14 @@ const EventDetail = ({ onClose, id }) => {
               />
             </div>
           </div>
-          <div className="h-full w-10/12 flex flex-col gap-5">
+          <div className="h-full w-10/12 flex flex-col gap-5 mt-[-10px]">
             <div>
-              <h1 className="text-2xl font-bold">{event.name}</h1>
+              <h1 className="text-2xl  text-center">{event.name}</h1>
             </div>
             <div className="flex gap-5">
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                  <span>
+                  <span className="">
                     <svg
                       fill="#000000"
                       className="w-6 h-6 shrink-0"
@@ -159,7 +159,7 @@ const EventDetail = ({ onClose, id }) => {
                       <path d="M0 26.016q0 2.496 1.76 4.224t4.256 1.76h20q2.464 0 4.224-1.76t1.76-4.224v-20q0-1.952-1.12-3.488t-2.88-2.144v2.624q0 1.248-0.864 2.144t-2.144 0.864-2.112-0.864-0.864-2.144v-3.008h-12v3.008q0 1.248-0.896 2.144t-2.112 0.864-2.144-0.864-0.864-2.144v-2.624q-1.76 0.64-2.88 2.144t-1.12 3.488v20zM4 26.016v-16h24v16q0 0.832-0.576 1.408t-1.408 0.576h-20q-0.832 0-1.44-0.576t-0.576-1.408zM6.016 3.008q0 0.416 0.288 0.704t0.704 0.288 0.704-0.288 0.288-0.704v-3.008h-1.984v3.008zM8 24h4v-4h-4v4zM8 18.016h4v-4h-4v4zM14.016 24h4v-4h-4v4zM14.016 18.016h4v-4h-4v4zM20 24h4v-4h-4v4zM20 18.016h4v-4h-4v4zM24 3.008q0 0.416 0.288 0.704t0.704 0.288 0.704-0.288 0.32-0.704v-3.008h-2.016v3.008z"></path>
                     </svg>
                   </span>
-                  <p className="text-base font-bold">{event.date}</p>
+                  <p className="text-lg">{event.date}</p>
                 </div>
                 <div className="flex gap-2">
                   <span>
@@ -174,7 +174,7 @@ const EventDetail = ({ onClose, id }) => {
                       <path d="M0 16q0-3.232 1.28-6.208t3.392-5.12 5.12-3.392 6.208-1.28q3.264 0 6.24 1.28t5.088 3.392 3.392 5.12 1.28 6.208q0 3.264-1.28 6.208t-3.392 5.12-5.12 3.424-6.208 1.248-6.208-1.248-5.12-3.424-3.392-5.12-1.28-6.208zM4 16q0 3.264 1.6 6.048t4.384 4.352 6.016 1.6 6.016-1.6 4.384-4.352 1.6-6.048-1.6-6.016-4.384-4.352-6.016-1.632-6.016 1.632-4.384 4.352-1.6 6.016zM14.016 16v-5.984q0-0.832 0.576-1.408t1.408-0.608 1.408 0.608 0.608 1.408v4h4q0.8 0 1.408 0.576t0.576 1.408-0.576 1.44-1.408 0.576h-6.016q-0.832 0-1.408-0.576t-0.576-1.44z"></path>
                     </svg>
                   </span>
-                  <p className="text-lg font-bold">{event.time}</p>
+                  <p className="text-lg ">{event.time} (GMT+3)</p>
                 </div>
                 <div className="flex gap-2">
                   <span className="text-lg">
@@ -196,15 +196,13 @@ const EventDetail = ({ onClose, id }) => {
                       />
                     </svg>
                   </span>
-                  <span className="text-lg font-bold">{event.location}</span>
+                  <span className="text-lg ">{event.location}</span>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-5">
               <div>
-                <h1 className="text-lg font-bold text-center">
-                  About This Event
-                </h1>
+                <h1 className="text-xl  text-center">About This Event</h1>
               </div>
               <div>
                 <p className="text-sm">{event.description}</p>

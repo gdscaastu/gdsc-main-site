@@ -60,7 +60,9 @@ const AddNewProjectForm = () => {
       !formData.name ||
       !formData.description ||
       !formData.project_link ||
-      !formData.status
+      !formData.status ||
+      !formData.start_date ||
+      !formData.end_date
     ) {
       console.error("Form data is invalid");
       alert("please fill out all fields");
@@ -89,15 +91,6 @@ const AddNewProjectForm = () => {
     }
   };
 
-  const handleProjectSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {
-      name: projectName,
-      description: projectDescription,
-      project_link: projectLink,
-      status: selectedOptions.value,
-    };
-  };
   return (
     <>
       <AddContributorModal
