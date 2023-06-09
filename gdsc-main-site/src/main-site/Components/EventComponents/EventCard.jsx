@@ -42,7 +42,8 @@ const EventCard = ({ event, isLoading }) => {
                   className="w-5 h-5 shrink-0 justify-center"
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -74,4 +75,3 @@ const EventCard = ({ event, isLoading }) => {
 };
 
 export default EventCard;
-

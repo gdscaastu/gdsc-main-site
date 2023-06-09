@@ -31,6 +31,10 @@ const UpdateEventForm = () => {
     });
   };
 
+  const handleCancel = () => {
+    navigate("/admin/event");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -47,7 +51,8 @@ const UpdateEventForm = () => {
       !formData.name ||
       !formData.description ||
       !formData.location ||
-      !formData.date
+      !formData.date ||
+      !formData.time
     ) {
       console.error("Form data is invalid");
       alert("please fill out all fields");
@@ -74,13 +79,6 @@ const UpdateEventForm = () => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const validateFields = () => {
-    if (!event?.title || !event?.description || !event?.date || !event?.time) {
-      return false;
-    }
-    return true;
   };
 
   useEffect(() => {
@@ -164,7 +162,10 @@ const UpdateEventForm = () => {
             </div>
 
             <div className="flex justify-between">
-              <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
+              <button
+                onClick={handleCancel}
+                className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black"
+              >
                 <span className="flex justify-center items-center">Cancel</span>
               </button>
               <button

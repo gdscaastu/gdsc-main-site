@@ -12,7 +12,7 @@ const LoadingSkeleton = () => {
 
 const Sponsors = () => {
   const navigate = useNavigate();
-  const [Sponsor, setSponsor] = useState([]);
+  const [Sponsors, setSponsor] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const handelDeleteSponsor = (id) => {
@@ -20,7 +20,7 @@ const Sponsors = () => {
   };
 
   const handelEditSponsor = (id) => {
-      navigate(`/admin/sponsor/edit/${id}`);
+    navigate(`/admin/sponsor/edit/${id}`);
   };
 
   useEffect(() => {
@@ -41,7 +41,10 @@ const Sponsors = () => {
     <div>
       <div className=" mb-6 flex h-12 justify-between shadow-sm bg-white border border-gray-900 text-gray-900  placeholder:text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2.5 px-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
         <h1 className="text-lg items-center">Sponsors</h1>
-        <button onClick={()=> handelEditbutton()} className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md">
+        <button
+          onClick={() => handelEditbutton()}
+          className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md"
+        >
           <span className="text-white  dark:text-white flex items-center justify-center text-sm">
             Add
           </span>
@@ -50,7 +53,8 @@ const Sponsors = () => {
             className="h-3 w-3 text-white font-bold dark:text-white flex items-center justify-center "
             fill="#000"
             viewBox="0 0 24 24"
-            stroke="currentColor">
+            stroke="currentColor"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -63,24 +67,27 @@ const Sponsors = () => {
       {isLoading ? (
         <LoadingSkeleton />
       ) : (
-        Sponsor.map((Sponsor, index) => (
+        Sponsors.map((Sponsor, index) => (
           <div
             key={Sponsor.id}
             className={`flex py-2 px-5 border-l border-black justify-between border-t border-r ${
               index === Sponsors.length - 1 ? "border-b" : ""
-            } `}>
+            } `}
+          >
             <div>
               <h1 className="">{Sponsor.name}</h1>
             </div>
             <div className="flex gap-2">
               <button
                 onClick={() => handelEditSponsor(Sponsor.id)}
-                className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
+                className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1"
+              >
                 <svg
                   className="w-5 h-5 text-white font-bold dark:text-white flex items-center justify-center "
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -91,12 +98,14 @@ const Sponsors = () => {
               </button>
               <button
                 onClick={() => handelDeleteSponsor(Sponsor.id)}
-                className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
+                className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1"
+              >
                 <svg
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M10 12V17"
                     stroke="#fff"

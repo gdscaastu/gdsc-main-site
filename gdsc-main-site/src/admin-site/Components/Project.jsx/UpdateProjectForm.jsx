@@ -27,6 +27,10 @@ const UpdateProjectForm = () => {
     setIsOpen(!isOpen);
   };
 
+  const handelCancel = () => {
+    navigate("/admin/project");
+  };
+
   const toggleUpdateModal = () => {
     setIsopen(!isopen);
   };
@@ -314,7 +318,10 @@ const UpdateProjectForm = () => {
               </div>
             )}
             <div className="mt-6 flex justify-between">
-              <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
+              <button
+                onClick={handelCancel}
+                className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black"
+              >
                 <span className="flex justify-center items-center">Cancel</span>
               </button>
               <button

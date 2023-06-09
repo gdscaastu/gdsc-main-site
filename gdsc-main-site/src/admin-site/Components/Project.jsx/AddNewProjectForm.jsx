@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import DatePicker from "../Date";
 import TimePicker from "../Time";
-import AddContributorModal from "./AddContributorModal"
+import AddContributorModal from "./AddContributorModal";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { async } from "q";
@@ -32,6 +32,11 @@ const AddNewProjectForm = () => {
   const toggleUpdateModal = () => {
     setIsopen(!isopen);
   };
+
+  const handelCancel = () => {
+    navigate("/admin/project");
+  };
+
   const handleFormSubmit = (contributor, role) => {
     const formData = {
       name: contributor,
@@ -61,28 +66,30 @@ const AddNewProjectForm = () => {
       alert("please fill out all fields");
       return;
     }
-    try{
-      const response = await axios.post("https://gdsc-main-site.onrender.com/v1/project",formData, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-        console.log("Success:", response.data);
-        console.log(response.status);
-        if (response.status === 200) {
-          navigate(`/admin/project/imageupload/${response.data.project.id}`);
+    try {
+      const response = await axios.post(
+        "https://gdsc-main-site.onrender.com/v1/project",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log("Success:", response.data);
+      console.log(response.status);
+      if (response.status === 200) {
+        navigate(`/admin/project/imageupload/${response.data.project.id}`);
       } else {
         alert("Something went wrong");
       }
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
-    
-    
   };
 
-  const handleProjectSubmit = async(e) => {
+  const handleProjectSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       name: projectName,
@@ -90,8 +97,6 @@ const AddNewProjectForm = () => {
       project_link: projectLink,
       status: selectedOptions.value,
     };
-   
-   
   };
   return (
     <>
@@ -170,7 +175,8 @@ const AddNewProjectForm = () => {
                 <div className="w-[40%] flex gap-10 justify-between">
                   <label
                     className="flex justify-center items-center"
-                    htmlFor="">
+                    htmlFor=""
+                  >
                     End Date:
                   </label>
                   <DatePicker setSelectedDate={setendDate} />
@@ -194,7 +200,8 @@ const AddNewProjectForm = () => {
               <button
                 onClick={toggleAddModal}
                 type="button"
-                className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md">
+                className="flex items-center  justify-center py-0 px-2 bg-blue-500 rounded-md"
+              >
                 <span className="text-white  dark:text-white flex items-center justify-center text-sm">
                   Add
                 </span>
@@ -203,7 +210,8 @@ const AddNewProjectForm = () => {
                   className="h-3 w-3 text-white font-bold dark:text-white flex items-center justify-center "
                   fill="#000"
                   viewBox="0 0 24 24"
-                  stroke="currentColor">
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -219,19 +227,22 @@ const AddNewProjectForm = () => {
                   <div
                     className={`flex justify-between border-black border-t border-l border-r  px-5 py-3 ${
                       index === Contributor.length - 1 ? "border-b" : ""
-                    }`}>
+                    }`}
+                  >
                     <div>
                       <h1 className="">{contributor.name.slice(1)}</h1>
                     </div>
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleDeleteContributor(index)}
-                        className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
+                        className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1"
+                      >
                         <svg
                           className="w-5 h-5"
                           viewBox="0 0 24 24"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           <path
                             d="M10 12V17"
                             stroke="#fff"
@@ -275,12 +286,16 @@ const AddNewProjectForm = () => {
               </div>
             )}
             <div className="mt-6 flex justify-between">
-              <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
+              <button
+                onClick={handelCancel}
+                className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black"
+              >
                 <span className="flex justify-center items-center">Cancel</span>
               </button>
               <button
                 type="submit"
-                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold">
+                className="mr-2  py-1 px-7 rounded-md bg-green-500 text-white font-bold"
+              >
                 <span className="flex justify-center items-center">
                   Save Changes
                 </span>

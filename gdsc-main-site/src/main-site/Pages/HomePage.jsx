@@ -22,7 +22,6 @@ const HomePage = () => {
       <div className="lg:w-full bg-white border-gray-200 dark:bg-white shadow-md flex justify-center w-full">
         <MainNavbar />
       </div>
-      <div className="lg:w-full bg-white border-gray-200 dark:bg-gray-900 shadow-md flex justify-center w-full mb-2"></div>
       <div className="flex flex-col w-full lg:w-[80%] lg:justify-self-center lg:flex-row lg:gap-20 mt-4.5 mb-4">
         <BecomeMemeber />
         <Slider />

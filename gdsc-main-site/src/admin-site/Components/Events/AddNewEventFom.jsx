@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { async } from "q";
 
-
 const AddNewEventFom = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -14,7 +13,6 @@ const AddNewEventFom = () => {
   const [place, setPlace] = useState("");
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,27 +23,13 @@ const AddNewEventFom = () => {
       time: selectedTime,
       date: selectedDate,
     };
-
-    
-    try {
-      const response = await axios.post('https://gdsc-main-site.onrender.com/v1/event', formData , 
-      {headers: {  Authorization: `Bearer ${localStorage.getItem('token')}`}}
-
-      );
-      if (response.status === 200) {
-        console.log(response.data);
-        navigate(`/admin/event/imageUpload/${response.data.event.id}`);
-    } 
-    } catch (error) {
-      console.log(error);
-    }
-  
     console.log(formData);
     if (
       !formData.name ||
       !formData.description ||
-      !formData.project_link ||
-      !formData.status
+      !formData.location ||
+      !formData.time ||
+      !formData.date
     ) {
       console.error("Form data is invalid");
       alert("please fill out all fields");
@@ -72,6 +56,9 @@ const AddNewEventFom = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleCancel = () => {
+    navigate("/admin/event");
   };
 
   return (
@@ -135,13 +122,19 @@ const AddNewEventFom = () => {
                 <label className="flex justify-center items-center" htmlFor="">
                   Time:
                 </label>
-                <TimePickerComponent required setSelectedTime={setSelectedTime} />
+                <TimePickerComponent
+                  required
+                  setSelectedTime={setSelectedTime}
+                />
               </div>
             </div>
           </div>
 
           <div className="flex justify-between">
-            <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
+            <button
+              onClick={handleCancel}
+              className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black"
+            >
               <span className="flex justify-center items-center">Cancel</span>
             </button>
             <button
