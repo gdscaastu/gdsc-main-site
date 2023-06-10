@@ -115,8 +115,8 @@ const AdminProject = () => {
                     d="M4 7H20"
                     stroke="#fff"
                     strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    strokeLinecap = "round"
+                    strokeLinejoin = "round"
                   />
                   <path
                     d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"

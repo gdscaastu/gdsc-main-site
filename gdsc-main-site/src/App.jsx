@@ -89,7 +89,7 @@ function App() {
           <Route exact path="/admin/event" element={<AdminEventPage />} />
           <Route exact path="/admin/event/new" element={<AddNewEventPage />} />
           <Route path="/admin/event/edit/:id" element={<UpdateEventPage />} />
-          <Route  path="/admin/event/imageupload/:id" element={<UploadEventImagePage />} />   
+          <Route  path="/admin/event/imageupload/:id" element={<UploadEventImagePage />} />   git a
         </Routes>
 
     
