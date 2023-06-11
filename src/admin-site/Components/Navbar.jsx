@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
       <div className="flex flex-col gap-1">
         <div className="block py-2 px-6 cursor-pointer">
-          <a href="/admin/project">Project</a>
+          <a href="/admin/project">Projects</a>
         </div>
         <div className="block py-2 px-6 ">
           <a href="/admin/team">Teams</a>
