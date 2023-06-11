@@ -8,7 +8,7 @@ This repository contains the source code for the development of the Google Devel
 2. [Aser Hailu](https://github.com/asero13th) - Front-End Developer
 3. [Yoseph Shemeles](https://github.com/jossyfresh) - Front-End Developer
 4. [Tinsaye Simeneh](https://github.com/tinsaye-simeneh) - UI Designer
-5. [Gemechis Elias](https://github.com/gemechis-elias) - Project and Content Manager
+5. [Gemechis Elias](https://github.com/gemechis-elias) - Project Manager/ Developer
 
 ## Screenshots
 
