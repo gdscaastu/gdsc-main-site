@@ -25,8 +25,7 @@ const Contributer = ({ contributer }) => {
       <Card.Body>
         <Card.Title className="my-1 p-2">{contributer.name}</Card.Title>
         <Card.Text className="my-3 p-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          <span className="text-blue-400">Status:</span> {contributer.status}
         </Card.Text>
       </Card.Body>
       <div className="container mb-3 flex flex-wrap justify-around">
