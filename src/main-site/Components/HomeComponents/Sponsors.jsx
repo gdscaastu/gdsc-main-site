@@ -51,12 +51,14 @@ const Sponsors = () => {
               <div
                 key={item.id}
                 className={`overflow-hidden border border-black ${
-                  isDesktop
-                    ? "w-[90px] h-[75px] ml-5"
-                    : "min-w-[45%] h-24 ml-5  "
+                  isDesktop ? "w-[90px] h-[75px] ml-5" : "min-w-[45%] h-24 ml-5"
                 }`}
               >
-                <a href={item.sponser_link} target="_blank" rel="noreferrer">
+                <a
+                  href={`${item.sponser_link}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <img
                     className="w-full h-full object-fill"
                     src={item.image_url}

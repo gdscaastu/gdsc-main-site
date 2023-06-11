@@ -10,15 +10,15 @@ const Contributer = ({ contributer }) => {
         width: "18rem",
         boxShadow: "10px 10px 5px 0px rgb(224, 222, 222)",
       }}
-      className="mx-5 mb-5 ">
+      className="mx-5 mb-5 "
+    >
       <div className="container">
         <Card.Img
-        className="w-[100%] rounded"
+          className="w-[100%] rounded"
           variant="top"
           src={contributer.image_url ? contributer.image_url : user}
           style={{
             maxHeight: "25vh",
-
           }}
         />
       </div>
@@ -29,14 +29,14 @@ const Contributer = ({ contributer }) => {
           bulk of the card's content.
         </Card.Text>
       </Card.Body>
-      <div
-        className="container mb-3 flex flex-wrap justify-around">
+      <div className="container mb-3 flex flex-wrap justify-around">
         <a
           style={{
             color: "red",
             fontSize: "25px",
           }}
-          href={contributer.telegram_url}>
+          href={`${contributer.telegram_url}`}
+        >
           <i class="fab fa-telegram"></i>
         </a>
         <a
@@ -44,7 +44,8 @@ const Contributer = ({ contributer }) => {
             color: "red",
             fontSize: "25px",
           }}
-          href={contributer.github_url}>
+          href={`${contributer.github_url}`}
+        >
           <i class="fab fa-github"></i>
         </a>
         <a
@@ -52,7 +53,8 @@ const Contributer = ({ contributer }) => {
             color: "red",
             fontSize: "25px",
           }}
-          href={contributer.linkedin_url}>
+          href={`${contributer.linkedin_url}`}
+        >
           <i class="fab fa-linkedin-in social-media-icon"></i>
         </a>
       </div>
