@@ -45,7 +45,7 @@ const MemberCard = (props) => {
             color: "red",
             fontSize: "25px",
           }}
-          href={`${props.member.telegram_url}`}>
+          href={`https://twitter.com/${props.member.telegram_url}`}>
           <i class="fab fa-twitter social-media-icon"></i>
         </a>
         <a
@@ -53,7 +53,7 @@ const MemberCard = (props) => {
             color: "red",
             fontSize: "25px",
           }}
-          href={`${props.member.github_url}`}>
+          href={`https://github.com/${props.member.github_url}`}>
           <i class="fab fa-github social-media-icon"></i>
         </a>
         <a

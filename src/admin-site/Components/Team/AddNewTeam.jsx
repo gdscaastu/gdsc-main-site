@@ -78,12 +78,12 @@ function MemberForm() {
         <input type="number" value={yearJoined} onChange={(e) => setYearJoined(e.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
     
       <label className="block text-gray-700 font-bold mb-2">
-        LinkedIn URL:
+        LinkedIn User name:
         </label>
         <input type="text" value={linkedinUrl} onChange={(e) => setLinkedinUrl(e.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
       
       <label className="block text-gray-700 font-bold mb-2">
-        GitHub URL:
+        GitHub User name:
         </label>
         <input type="text" value={githubUrl} onChange={(e) => setGithubUrl(e.target.value)}className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
       

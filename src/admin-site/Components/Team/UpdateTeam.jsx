@@ -86,11 +86,11 @@ function MemberUpdateForm() {
                     <input type="text" name="status" id="status" value={status} onChange={(event) => setStatus(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="linkedin_url" className="block text-gray-700 font-bold mb-2">LinkedIn URL:</label>
+                    <label htmlFor="linkedin_url" className="block text-gray-700 font-bold mb-2">LinkedIn User name:</label>
                     <input type="url" name="linkedin_url" id="linkedin_url" value={linkedin_url} onChange={(event) => setLinkedin_url(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="github_url" className="block text-gray-700 font-bold mb-2">GitHub URL:</label>
+                    <label htmlFor="github_url" className="block text-gray-700 font-bold mb-2">GitHub User name:</label>
                     <input type="text" name="github_url" id="github_url" value={github_url} onChange={(event) => setGithub_url(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                 </div>
                 <select value={member_type} onChange={(e) => setMemebr_type(e.target.value)} name="" id="" className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
