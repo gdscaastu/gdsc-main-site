@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.noscroll{
+    scrollbar-width: none;
+}
+.noscroll::-webkit-scrollbar {
+    display: none;
+}
+.scrolly{
+    scrollbar-width: none;
+}
+.scrolly::-webkit-scrollbar {
+    display: none;
+}
