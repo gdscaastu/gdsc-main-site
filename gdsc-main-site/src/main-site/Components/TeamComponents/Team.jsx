@@ -68,9 +68,10 @@ const CardList = () => {
         }}
         className="text-left team-header">Meet our team</h5>
         <p npmclassName="text-left text-muted">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt quidem
-          vel aperiam animi cum, minima reiciendis amet numquam, deleniti iusto
-          rerum velit nostrum aliquid eveniet sequi optio et fuga? Quod!
+        Our team is comprised of enthusiastic students from diverse backgrounds who share a common 
+        passion for technology and innovation. With their unique skill sets, they play a crucial role in
+         fostering a vibrant community of developers within our university.
+
         </p>
       </div>
       <div className=" mx-auto">
