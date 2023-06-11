@@ -1,11 +1,11 @@
 import "./App.css";
+import react from "react"
 import Projects from "../src/main-site/Components/ProjectsComponent/Projects";
 import ClintProjectPage from "./main-site/Pages/ClientprojectPage";
 import ProjectDetail from "../src/main-site/Components/ProjectsComponent/ProjectDetail";
 import HomePage from "./main-site/Pages/HomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainNavbar from "./main-site/Components/Navabar";
-import Footer from "./main-site/Components/Footer";
 import EventPage from "./main-site/Pages/EventPage";
 import EventDetailPage from "./main-site/Pages/EventDetailPage";
 import ClientprojectDetailPage from "./main-site/Pages/ClientProjectDetailPage";
@@ -89,7 +89,7 @@ function App() {
           <Route exact path="/admin/event" element={<AdminEventPage />} />
           <Route exact path="/admin/event/new" element={<AddNewEventPage />} />
           <Route path="/admin/event/edit/:id" element={<UpdateEventPage />} />
-          <Route  path="/admin/event/imageupload/:id" element={<UploadEventImagePage />} />   git a
+          <Route  path="/admin/event/imageupload/:id" element={<UploadEventImagePage />} />   
         </Routes>
 
     

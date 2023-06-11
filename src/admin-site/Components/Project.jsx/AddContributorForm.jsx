@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AddContributorForm = ({ handleFormSubmit, togglemodal }) => {
   const [members, setMembers] = useState([]);
