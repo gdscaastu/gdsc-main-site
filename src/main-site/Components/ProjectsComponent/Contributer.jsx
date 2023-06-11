@@ -25,7 +25,9 @@ const Contributer = ({ contributer }) => {
       <Card.Body>
         <Card.Title className="my-1 p-2">{contributer.name}</Card.Title>
         <Card.Text className="my-3 p-2">
-          <span className="text-blue-400">Status:</span> {contributer.status}
+          <span className="text-blue-400">Status:</span> {contributer.status}<br/>
+          <span className="text-blue-400">Role:</span> {contributer.role}
+          <span className="text-blue-400">Member type:</span> {contributer.member_type}
         </Card.Text>
       </Card.Body>
       <div className="container mb-3 flex flex-wrap justify-around">
@@ -34,16 +36,16 @@ const Contributer = ({ contributer }) => {
             color: "red",
             fontSize: "25px",
           }}
-          href={`${contributer.telegram_url}`}
+          href={`https://twitter.com/${contributer.telegram_url}`}
         >
-          <i class="fab fa-telegram"></i>
+          <i class="fab fa-twitter"></i>
         </a>
         <a
           style={{
             color: "red",
             fontSize: "25px",
           }}
-          href={`${contributer.github_url}`}
+          href={`https://github.com/${contributer.github_url}`}
         >
           <i class="fab fa-github"></i>
         </a>
@@ -52,7 +54,7 @@ const Contributer = ({ contributer }) => {
             color: "red",
             fontSize: "25px",
           }}
-          href={`${contributer.linkedin_url}`}
+          href={`https://linkedin/in/${contributer.linkedin_url}`}
         >
           <i class="fab fa-linkedin-in social-media-icon"></i>
         </a>

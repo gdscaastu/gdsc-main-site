@@ -45,7 +45,7 @@ const MemberCard = (props) => {
             fontSize: "25px",
           }}
           href={`${props.member.telegram_url}`}>
-          <i class="fab fa-telegram social-media-icon"></i>
+          <i class="fab fa-twitter social-media-icon"></i>
         </a>
         <a
           style={{
