@@ -142,7 +142,7 @@ const Projectdetail = () => {
             textAlign: "left",
           }}
           className="container mt-5">
-          <h6 style={{ color: "#4486f4" }}>project Detail</h6>
+          <h6 style={{ color: "#4486f4" }}>Project Detail</h6>
 
           <div className="">
             <span

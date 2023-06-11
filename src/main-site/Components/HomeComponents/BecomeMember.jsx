@@ -18,9 +18,12 @@ const BecomeMemeber = () => {
           </p>
         </div>
         <div>
-          <button className="bg-blue-500 text-white font-bold rounded-lg px-6 py-3">
-            Become a member
-          </button>
+        <button
+  className="bg-blue-500 text-white font-bold rounded-lg px-6 py-3"
+  onClick={() => window.open("https://gdsc.community.dev/addis-ababa-science-and-technology-university-ethiopia/")}>
+  Become a member
+</button>
+
         </div>
       </div>
     </div>
