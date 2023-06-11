@@ -21,5 +21,10 @@ export default function useLocalStorage(key, initialValue) {
     localStorage.setItem(key, JSON.stringify(value));
   }, [value]);
 
-  return [value, setValue];
+  const logout = () => {
+    localStorage.removeItem(key);
+    setValue(initialValue);
+  };
+
+  return [value, setValue, logout];
 }

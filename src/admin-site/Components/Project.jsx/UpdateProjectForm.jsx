@@ -27,6 +27,10 @@ const UpdateProjectForm = () => {
     setIsOpen(!isOpen);
   };
 
+  const handelCancel = () => {
+    navigate("/admin/project");
+  };
+
   const toggleUpdateModal = () => {
     setIsopen(!isopen);
   };
@@ -52,7 +56,10 @@ const UpdateProjectForm = () => {
     console.log(response2.data);
 
   };
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
 
+=======
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
   const submit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -71,12 +78,19 @@ const UpdateProjectForm = () => {
     //   alert("please fill out all fields");
     //   return;
     // }
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
     // console.log(formData);
     console.log(Contributor);
 
     try {
 
      
+=======
+    console.log(formData);
+    console.log(Contributor);
+
+    try {
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
       const response = await axios.put(
         `https://gdsc-main-site.onrender.com/v1/project/${id}`,
         formData,
@@ -86,6 +100,7 @@ const UpdateProjectForm = () => {
       );
 
       console.log(response.data);
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
       // console.log(response.status);
 
       
@@ -96,6 +111,16 @@ const UpdateProjectForm = () => {
       } 
     } catch (err) {
       console.error(err, err.response);
+=======
+      console.log(response.status);
+      if (response.status === 200) {
+        navigate("/admin/project");
+      } else {
+        setError("An error occurred, please try again later");
+      }
+    } catch (err) {
+      console.error(err, error);
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
     }
 
     // Sent the request to the API with the valid form data
@@ -136,6 +161,11 @@ const UpdateProjectForm = () => {
       setProjectName(result.data.name);
       setProjectDescription(result.data.description);
       setProjectLink(result.data?.project_link);
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
+=======
+      setStartDate(result.data.start_date);
+      setEndDate(result.data?.end_date);
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
       setStatus(result.data.status);
     };
 
@@ -329,7 +359,10 @@ const UpdateProjectForm = () => {
               </div>
             )}
             <div className="mt-6 flex justify-between">
-              <button className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black">
+              <button
+                onClick={handelCancel}
+                className="mr-2  py-1 px-7 rounded-md bg-gray-300 text-black"
+              >
                 <span className="flex justify-center items-center">Cancel</span>
               </button>
               <button

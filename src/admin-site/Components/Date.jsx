@@ -21,7 +21,7 @@ const DatePicker = ({ setSelectedDate }) => {
     autoHide: true,
     todayBtn: false,
     clearBtn: true,
-    minDate: new Date(),
+    minDate: null,
     theme: {
       background: "#fff", // Change the background color to white
       todayBtn: "",
