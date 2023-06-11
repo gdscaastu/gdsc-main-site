@@ -1,12 +1,15 @@
 import React from "react";
 import logo from "../../assets/SliderImages/LO.png";
 import useLocalStorage from "../Hook/useLocalStorage";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [user, setUser, logout] = useLocalStorage("user", null);
+  const navigate = useNavigate();
+  const [user, setUser, logout] = useLocalStorage("isAdmin", null);
 
   const handleLogout = () => {
     logout();
+    navigate("/admin/login");
   };
 
   return (
