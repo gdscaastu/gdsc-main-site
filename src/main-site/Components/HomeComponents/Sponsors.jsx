@@ -11,8 +11,14 @@ const Sponsors = () => {
   useEffect(() => {
     fetch("https://gdsc-main-site.onrender.com/v1/sponser")
       .then((response) => response.json())
-      .then((json) => setData(json));
-    console.log(data);
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
   }, []);
   return (
     <div className="lg:w-full w-[95%] p-6 px-10 bg-white rounded-lg shadow-right-bottom">
@@ -22,26 +28,45 @@ const Sponsors = () => {
         </h1>
         <br />
       </div>
-      <div className="flex lg:flex-wrap overflow-x-scroll lg:lg:justify-evenly p-5 noscroll">
-        {data
-          .filter((item) => item.image_url)
-          .map((item) => (
+      {loading ? (
+        <div className="flex lg:flex-wrap overflow-x-scroll lg:lg:justify-evenly p-5 noscroll">
+          {[1, 2, 3, 4, 5].map((item) => (
             <div
-              key={item.id}
+              key={item}
               className={`overflow-hidden border border-black ${
                 isDesktop ? "w-[90px] h-[75px] ml-5" : "min-w-[45%] h-24 ml-5  "
               }`}
             >
-              <a href={item.sponser_link} target="_blank" rel="noreferrer">
-                <img
-                  className="w-full h-full object-fill"
-                  src={item.image_url}
-                  alt={item.name}
-                />
-              </a>
+              <div className="animate-pulse w-full h-full bg-gray-200"></div>
             </div>
           ))}
-      </div>
+        </div>
+      ) : error ? (
+        <div>Error occurred while loading sponsors.</div>
+      ) : (
+        <div className="flex lg:flex-wrap overflow-x-scroll lg:lg:justify-evenly p-5 noscroll">
+          {data
+            .filter((item) => item.image_url)
+            .map((item) => (
+              <div
+                key={item.id}
+                className={`overflow-hidden border border-black ${
+                  isDesktop
+                    ? "w-[90px] h-[75px] ml-5"
+                    : "min-w-[45%] h-24 ml-5  "
+                }`}
+              >
+                <a href={item.sponser_link} target="_blank" rel="noreferrer">
+                  <img
+                    className="w-full h-full object-fill"
+                    src={item.image_url}
+                    alt=""
+                  />
+                </a>
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };
