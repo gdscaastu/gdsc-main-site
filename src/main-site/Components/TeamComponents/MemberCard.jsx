@@ -26,9 +26,15 @@ const MemberCard = (props) => {
       <Card.Body>
         <Card.Title className="my-3 p-2">{props.member.name}</Card.Title>
         <Card.Text className="text-left my-2 p-2">
+<<<<<<< HEAD:gdsc-main-site/src/main-site/Components/TeamComponents/MemberCard.jsx
+          <span className="text-blue-400">position</span>: {props.member.position}<br/>  
+          <span className="text-blue-400">status</span>: {props.member.status}<br />
+          <span className="text-blue-400">joined year</span>: {props.member.year_joined}
+=======
           <span className="text-blue-700">Position</span>: {props.member.position}<br/>  
           <span className="text-blue-700">Status</span>: {props.member.status}<br />
           <span className="text-blue-700">Joined year</span>: {props.member.year_joined}
+>>>>>>> main:src/main-site/Components/TeamComponents/MemberCard.jsx
         </Card.Text>
        
       </Card.Body>
@@ -45,7 +51,7 @@ const MemberCard = (props) => {
             fontSize: "25px",
           }}
           href={`${props.member.telegram_url}`}>
-          <i class="fab fa-telegram social-media-icon"></i>
+          <i class="fab fa-twitter social-media-icon"></i>
         </a>
         <a
           style={{

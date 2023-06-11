@@ -34,16 +34,32 @@ const UpdateProjectForm = () => {
   const toggleUpdateModal = () => {
     setIsopen(!isopen);
   };
-  const handleFormSubmit = (contributor, role) => {
+  const handleFormSubmit = async(contributor, role) => {
     const formData = {
-      id: contributor.slice(0, 1),
-      name: contributor.slice(2),
+      member_id: parseInt(contributor.split(" ")[0]),
+      name: contributor.split(" ")[1],
       role: role,
     };
+
     setContributor([...Contributor, formData]);
     setLen(Contributor.length);
-    console.log(Contributor);
+    console.log(formData);
+
+    const response2 = await axios.post(
+      `https://gdsc-main-site.onrender.com/v1/project/contributors/${id}`,
+       formData,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+
+    console.log(response2.data);
+
   };
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
+
+=======
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
   const submit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -62,10 +78,19 @@ const UpdateProjectForm = () => {
     //   alert("please fill out all fields");
     //   return;
     // }
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
+    // console.log(formData);
+    console.log(Contributor);
+
+    try {
+
+     
+=======
     console.log(formData);
     console.log(Contributor);
 
     try {
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
       const response = await axios.put(
         `https://gdsc-main-site.onrender.com/v1/project/${id}`,
         formData,
@@ -75,6 +100,18 @@ const UpdateProjectForm = () => {
       );
 
       console.log(response.data);
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
+      // console.log(response.status);
+
+      
+
+
+      if (response.status === 200) {
+        navigate("/admin/project");
+      } 
+    } catch (err) {
+      console.error(err, err.response);
+=======
       console.log(response.status);
       if (response.status === 200) {
         navigate("/admin/project");
@@ -83,6 +120,7 @@ const UpdateProjectForm = () => {
       }
     } catch (err) {
       console.error(err, error);
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
     }
 
     // Sent the request to the API with the valid form data
@@ -123,8 +161,11 @@ const UpdateProjectForm = () => {
       setProjectName(result.data.name);
       setProjectDescription(result.data.description);
       setProjectLink(result.data?.project_link);
+<<<<<<< HEAD:gdsc-main-site/src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
+=======
       setStartDate(result.data.start_date);
       setEndDate(result.data?.end_date);
+>>>>>>> main:src/admin-site/Components/Project.jsx/UpdateProjectForm.jsx
       setStatus(result.data.status);
     };
 
@@ -330,6 +371,15 @@ const UpdateProjectForm = () => {
               >
                 <span className="flex justify-center items-center">
                   Save Changes
+                </span>
+              </button>
+              <button
+              onClick={() => navigate(`/admin/project/imageupload/${id}`)}
+                type="button"
+                className="mr-2  py-1 px-7 rounded-md  text-white font-bold"
+              >
+                <span className="flex justify-center items-center text-blue-400">
+                  add image
                 </span>
               </button>
             </div>

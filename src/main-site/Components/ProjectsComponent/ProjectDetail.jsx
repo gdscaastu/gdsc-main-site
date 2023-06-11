@@ -134,14 +134,7 @@ const Projectdetail = () => {
             style={{
               fontSize: "13px",
             }}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Accusantium ab corrupti nemo quod porro cumque numquam voluptatem
-            voluptas, adipisci vel perferendis laboriosam, unde earum
-            voluptates, minima doloribus! Voluptatum, fugit at! Facilis id enim
-            dolorum pariatur exercitationem. Alias eum officia pariatur
-            molestias quae sed, optio possimus nihil asperiores eveniet iusto
-            odit atque veritatis magnam a, ratione quam debitis nobis sunt
-            voluptatum.
+            {project.description}
           </p>
         </div>
         <div
