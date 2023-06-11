@@ -45,8 +45,8 @@ function MemberUpdateForm() {
         email,
         position,
         status,
-        linkedin_url,
-        github_url,
+        linkedin_url: linkedin_url,
+        github_url: github_url,
         member_type,
         year_joined
     },
@@ -91,12 +91,13 @@ function MemberUpdateForm() {
                 </div>
                 <div className="mb-4">
                     <label htmlFor="github_url" className="block text-gray-700 font-bold mb-2">GitHub URL:</label>
-                    <input type="url" name="github_url" id="github_url" value={github_url} onChange={(event) => setGithub_url(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                    <input type="text" name="github_url" id="github_url" value={github_url} onChange={(event) => setGithub_url(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                 </div>
-                <div className="mb-4">
-                    <label htmlFor="member_type" className="block text-gray-700 font-bold mb-2">Member Type:</label>
-                    <input type="text" name="member_type" id="member_type" value={member_type} onChange={(event) => setMemebr_type(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-                </div>
+                <select value={member_type} onChange={(e) => setMemebr_type(e.target.value)} name="" id="" className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Core Team">Core Team</option>
+                    <option value="Member">Member</option>
+                    <option value="Alumni">Alumni</option>
+                </select>
                 <div className="mb-4">
                     <label htmlFor="year_joined" className="block text-gray-700 font-bold mb-2">Year Joined:</label>
                     <input type="number" name="year_joined" id="year_joined" value={year_joined} onChange={(event) => setYearJoind(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />

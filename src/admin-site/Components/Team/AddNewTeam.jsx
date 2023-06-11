@@ -68,8 +68,8 @@ function MemberForm() {
         </label>
         <select value={memberType} onChange={(e) => setMemberType(e.target.value)} name="" id="" className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             <option value="Core Team">Core Team</option>
-            <option value="Member">Extended</option>
-            <option value="Alumni">Contributor</option>
+            <option value="Extended">Extended</option>
+            <option value="Alumni">Alumni</option>
         </select>
       
       <label className="block text-gray-700 font-bold mb-2">
