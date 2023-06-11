@@ -76,7 +76,6 @@ This project is licensed under the [MIT License](LICENSE). Feel free to use, mod
 
 If you have any questions, feel free to reach out to the project maintainer:
 
-- Name: Gemechis Elias
-- GitHub: [gemechis-elias](https://github.com/gemechis-elias)
+- gdscaastu@gmail.com
 
 Thank you for your interest in the GDSC Main Site project. We appreciate your contributions and support!
