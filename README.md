@@ -1,7 +1,5 @@
 # GDSC Main Site Development Project
 
-![GDSC Logo](https://s3.amazonaws.com/penn.clubs/clubs_small/developer-student-clubs-penn-chapter.png)
-
 This repository contains the source code for the development of the Google Developers Students Clubs (GDSC) main site. The main objective of this project is to promote the club and provide information on the club's activities for visitors. The site is built using React.js for the front-end and Node.js for the back-end, including a REST API.
 
 ## Contributors
