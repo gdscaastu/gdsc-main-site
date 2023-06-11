@@ -14,17 +14,18 @@ const MemberCard = (props) => {
       className="mb-5 mx-3 bg-white">
       <div className="container">
         <Card.Img
+        className="mt-3 p-2 mx-auto d-block rounded-full border border-dark border-2"
           variant="top"
           src={props.member.image_url ? props.member.image_url : user}
           style={{
-            maxHeight: "30vh",
-            width: "100%",
-            backgroundSize: "cover",
+            width: "150px",
+            height: "150px",
+            objectFit: "cover",
           }}
         />
       </div>
       <Card.Body>
-        <Card.Title className="my-3 p-2">{props.member.name}</Card.Title>
+        <Card.Title className="my-3 p-2 text-black">{props.member.name}</Card.Title>
         <Card.Text className="text-left my-2 p-2">
           <span className="text-blue-700">Position</span>: {props.member.position}<br/>  
           <span className="text-blue-700">Status</span>: {props.member.status}<br />
