@@ -28,7 +28,7 @@ const Contributer = ({ contributer }) => {
         <Card.Title className="my-1 p-2">{contributer.name}</Card.Title>
         <Card.Text className="my-3 p-2">
           <span className="text-blue-400">Status:</span> {contributer.status}<br/>
-          <span className="text-blue-400">Role:</span> {contributer.role}
+          <span className="text-blue-400">Role:</span> {contributer.role}<br/>
           <span className="text-blue-400">Member type:</span> {contributer.member_type}
         </Card.Text>
       </Card.Body>
