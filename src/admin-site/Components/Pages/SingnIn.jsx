@@ -32,7 +32,9 @@ const SingnIn = () => {
       }
     } catch (error) {
       console.error(error);
-      setError("An error occurred, please try again later");
+      setError("incorrect email or password");
+      setEmail("");
+      setPassword("");
     }
   };
 

@@ -15,13 +15,41 @@ const Event = () => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const handelDeleteEvent = (id) => {
-    console.log(id);
+
+  const filterEvent = (id) => {
+    const newEvent = events.filter((event) => event.id !== id);
+    setEvents(newEvent);
   };
 
-  const handelEditEvent = (id) => {
-    console.log(id);
+  const confirmDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this event?")) {
+      handelDeleteEvent(id);
+    }
   };
+
+  const handelDeleteEvent = (id) => {
+    fetch(`https://gdsc-main-site.onrender.com/v1/event/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((response) => response.json())    
+      .then((data) => {
+        console.log("Success:", data);
+        filterEvent(id);
+        navigate(`/admin/event/`);
+      }
+      )
+      .catch((error) => {
+        console.error("Error:", error);
+      }
+      );
+      
+  };
+
+  
 
   useEffect(() => {
     fetch("https://gdsc-main-site.onrender.com/v1/event")
@@ -90,7 +118,7 @@ const Event = () => {
                 </svg>
               </button>
               <button
-                onClick={() => handelDeleteEvent(event.id)}
+                onClick={() => confirmDelete(event.id)}
                 className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
                 <svg
                   className="w-5 h-5"
