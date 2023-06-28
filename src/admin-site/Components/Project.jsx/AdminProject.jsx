@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 const LoadingSkeleton = () => {
   return (
     <div className="animate-pulse space-y-4">
@@ -15,8 +16,29 @@ const AdminProject = () => {
   const [projects, setproject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const filterProject = (id) => {
+    const newProject = projects.filter((project) => project.id !== id);
+    setproject(newProject);
+  };
+
   const handelDeleteProject = (id) => {
-    console.log(id);
+    fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        filterProject(id);
+        navigate(`/admin/project/`);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const handelEditProject = (id) => {

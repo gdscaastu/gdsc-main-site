@@ -7,7 +7,7 @@ const Members = () => {
   const [members, setMembers] = useState([]);
   const [year, setYear] = useState(new Date().getFullYear());
   const navigate = useNavigate();
-
+<event className="preventDefaultx"></event>
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -17,6 +17,31 @@ const Members = () => {
     };
     fetchData();
   }, [year]);
+
+  const filterMember = (id) => {
+    const newMember = members.filter((member) => member.id !== id);
+    setMembers(newMember);
+  };
+
+  const handleDelete = (id) => {
+    fetch(`https://gdsc-main-site.onrender.com/v1/member/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        filterMember(id);
+     
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   const groupedMembers = members.reduce((groups, member) => {
     const position = member.member_type;
@@ -76,9 +101,53 @@ const Members = () => {
               {groupedMembers[position].map(member => (
                 <div key={member.id} className="border p-1 rounded-md flex justify-between">
                   <h4 className=" text-md p-3">{member.name}</h4>
-                  
                     <a className='p-3' href={`/admin/member/edit/${member.id}`}><i size="sm" class="fas fa-arrow-right"></i></a>
-                 
+                    <button
+                onClick={() => handleDelete
+                  (member.id)}
+                className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10 12V17"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M14 12V17"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4 7H20"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
                 </div>
               ))}
             </div>
