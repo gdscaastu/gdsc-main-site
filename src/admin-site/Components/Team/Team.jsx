@@ -23,7 +23,17 @@ const Members = () => {
     setMembers(newMember);
   };
 
+  const confirmDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this member?")) {
+      handleDelete(id);
+    }
+  };
+
+
   const handleDelete = (id) => {
+    {
+      
+    }
     fetch(`https://gdsc-main-site.onrender.com/v1/member/${id}`, {
       method: "DELETE",
       headers: {
@@ -103,7 +113,7 @@ const Members = () => {
                   <h4 className=" text-md p-3">{member.name}</h4>
                     <a className='p-3' href={`/admin/member/edit/${member.id}`}><i size="sm" class="fas fa-arrow-right"></i></a>
                     <button
-                onClick={() => handleDelete
+                onClick={() => confirmDelete
                   (member.id)}
                 className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
                 <svg

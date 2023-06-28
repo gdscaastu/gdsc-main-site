@@ -21,6 +21,12 @@ const Event = () => {
     setEvents(newEvent);
   };
 
+  const confirmDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this event?")) {
+      handelDeleteEvent(id);
+    }
+  };
+
   const handelDeleteEvent = (id) => {
     fetch(`https://gdsc-main-site.onrender.com/v1/event/${id}`, {
       method: "DELETE",
@@ -112,7 +118,7 @@ const Event = () => {
                 </svg>
               </button>
               <button
-                onClick={() => handelDeleteEvent(event.id)}
+                onClick={() => confirmDelete(event.id)}
                 className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
                 <svg
                   className="w-5 h-5"

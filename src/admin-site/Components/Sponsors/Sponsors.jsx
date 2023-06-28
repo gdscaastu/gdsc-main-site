@@ -15,8 +15,37 @@ const Sponsors = () => {
   const [Sponsors, setSponsor] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const filterSponsor = (id) => {
+    const newSponsor = Sponsors.filter((Sponsor) => Sponsor.id !== id);
+    setSponsor(newSponsor);
+  };
+
+  const confirmDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this Sponsor?")) {
+      handelDeleteSponsor(id);
+    }
+  };
+
   const handelDeleteSponsor = (id) => {
-    console.log(id);
+    fetch(`https://gdsc-main-site.onrender.com/v1/sponser/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        filterSponsor(id);
+        
+      }
+      )
+      .catch((error) => {
+        console.error("Error:", error);
+      }
+      );
+
   };
 
   const handelEditSponsor = (id) => {
@@ -97,7 +126,7 @@ const Sponsors = () => {
                 </svg>
               </button>
               <button
-                onClick={() => handelDeleteSponsor(Sponsor.id)}
+                onClick={() => confirmDelete(Sponsor.id)}
                 className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1"
               >
                 <svg

@@ -21,6 +21,12 @@ const AdminProject = () => {
     setproject(newProject);
   };
 
+  const confirmDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      handelDeleteProject(id);
+    }
+  };
+
   const handelDeleteProject = (id) => {
     fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`, {
       method: "DELETE",
@@ -112,7 +118,7 @@ const AdminProject = () => {
                 </svg>
               </button>
               <button
-                onClick={() => handelDeleteProject(project.id)}
+                onClick={() => confirmDelete(project.id)}
                 className="ml-auto flex items-center px-4 rounded-md bg-blue-400 py-1">
                 <svg
                   className="w-5 h-5"
