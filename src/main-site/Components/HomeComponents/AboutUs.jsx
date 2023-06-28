@@ -14,13 +14,13 @@ const AboutUs = () => {
           </h1>
         </div>
         <div className="flex flex-col gap-2">
-          <p>
+          <p className="text-gray-500">
             Our mission is to provide a space where students can learn, build,
             and grow their skills in technology. We organize workshops, events,
             and projects that are designed to help students gain hands-on
             experience with the latest technologies and tools.
           </p>
-          <p>
+          <p className="text-gray-500">
             Our activities cover a wide range of topics, including web
             development, machine learning, mobile app development, and more. At
             our community, we believe that everyone should have access to the

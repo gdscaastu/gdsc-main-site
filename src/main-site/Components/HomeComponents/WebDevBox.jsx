@@ -78,7 +78,7 @@ const WebDevBox = () => {
       </div>
       <div className=" flex flex-col gap-1 ">
         <h1 className="text-black font-bold text-lg">Web Development</h1>
-        <p className="text-xs mr-3">
+        <p className="text-xs mr-3 text-gray-500">
           Learn the core foundations of a delightful web experience both for the
           user and developer. Stay up to tabs with emerging and trending
           technologies. Get access to a guided, tutorial and hands-on coding

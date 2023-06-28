@@ -11,10 +11,25 @@ const MobFooter = () => {
             Connect
           </div>
           <div className="flex flex-col gap-3  text-gray-500 tracking-wide subpixel-antialiased">
-            <div>Twitter</div>
-            <div>Linkedin</div>
-            <div>YouTube</div>
-            <div>Events</div>
+            <div>
+              <a href="https://twitter.com/gdscaastu" target="_blank">
+                Twitter
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://www.linkedin.com/company/gdsc-aastu/"
+                target="_blank"
+              >
+                Linkedin
+              </a>
+            </div>
+            <div>
+              <a href="https://www.youtube.com/@gdscaastu" target="_blank">
+                YouTube
+              </a>
+            </div>
+            
           </div>
         </div>
         <div className="flex flex-col gap-3">
@@ -22,9 +37,24 @@ const MobFooter = () => {
             Programs
           </div>
           <div className="flex flex-col gap-3 text-gray-500 tracking-wide subpixel-antialiased">
-            <div>Women Techmakers</div>
-            <div>Google Developers Group</div>
-            <div>Google Developers Experts</div>
+            <div>
+              <a href="https://www.womentechmakers.com/" target="_blank">
+                Women Techmakers
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://developers.google.com/programs/community/"
+                target="_blank"
+              >
+                Google Developers Group
+              </a>
+            </div>
+            <div>
+              <a href="https://developers.google.com/experts/" target="_blank">
+                Google Developers Experts
+              </a>
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-3 mt-2 mb-7">
@@ -32,9 +62,21 @@ const MobFooter = () => {
             Developers
           </div>
           <div className="flex flex-col gap-3 text-gray-500  tracking-wide subpixel-antialiased">
-            <div>Firebase Console</div>
-            <div>Google Cloud Platform</div>
-            <div>Actions on Google</div>
+            <div>
+              <a href="https://console.firebase.google.com/" target="_blank">
+                Firebase Console
+              </a>
+            </div>
+            <div>
+              <a href="https://console.cloud.google.com/" target="_blank">
+                Google Cloud Platform
+              </a>
+            </div>
+            <div>
+              <a href="https://console.actions.google.com/" target="_blank">
+                Actions on Google
+              </a>
+            </div>
           </div>
         </div>
       </div>

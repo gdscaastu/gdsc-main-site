@@ -13,12 +13,12 @@ const Opportunity = () => {
         <p>Developers program for a university students.</p>
       </div>
       <div className="flex flex-col gap-3 text-sm">
-        <p>
+        <p className="text-gray-500">
           Grow their knowledge on developer technologies and more through peer
           to peer workshops and events. Showcase their prototypes and solutions
           to their local community and industry leaders. Gain relevant industry
         </p>
-        <p>
+        <p className="text-gray-500">
           experience by solving problems for local organizations with technology
           based solutions. Getting inspiration to become world-class developers
           and changemakers from sharing others' success stories.
