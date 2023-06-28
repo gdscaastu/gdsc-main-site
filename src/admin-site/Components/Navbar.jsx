@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/SliderImages/LO.png";
 import useLocalStorage from "../Hook/useLocalStorage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -41,16 +41,16 @@ const Navbar = () => {
       </div>
       <div className="flex flex-col gap-1">
         <div className="block py-2 px-6 cursor-pointer">
-          <a href="/admin/project">Projects</a>
+          <NavLink to="/admin">Project</NavLink>
         </div>
         <div className="block py-2 px-6 ">
-          <a href="/admin/team">Teams</a>
+          <NavLink to="/admin/team">Teams</NavLink>
         </div>
         <div className="block py-2 px-6 ">
-          <a href="/admin/event">Events</a>
+          <NavLink to="/admin/event">Events</NavLink>
         </div>
         <div className="block py-2 px-6 ">
-          <a href="/admin/sponsor">Sponsors</a>
+          <NavLink to="/admin/sponsor">Sponsor</NavLink>
         </div>
       </div>
       <div className="py-2 px-4 flex justify-center absolute bottom-0 pb-11 gap-2">
