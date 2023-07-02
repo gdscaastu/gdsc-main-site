@@ -37,6 +37,7 @@ const UpdateEventForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const formData = {
       name: event.name,
       description: event.description,
@@ -44,9 +45,9 @@ const UpdateEventForm = () => {
       time: selectedTime,
       date: selectedDate,
     };
-
-    // Submit the event object to the server
-    console.log(event);
+  
+    console.log(formData);
+  
     if (
       !formData.name ||
       !formData.description ||
@@ -55,9 +56,10 @@ const UpdateEventForm = () => {
       !formData.time
     ) {
       console.error("Form data is invalid");
-      alert("please fill out all fields");
+      alert("Please fill out all fields");
       return;
     }
+  
     try {
       const response = await axios.post(
         `https://gdsc-main-site.onrender.com/v1/event/${id}`,
@@ -69,8 +71,10 @@ const UpdateEventForm = () => {
           },
         }
       );
+  
       console.log("Success:", response.data);
       console.log(response.status);
+  
       if (response.status === 200) {
         navigate("/admin/event");
       } else {
@@ -80,6 +84,7 @@ const UpdateEventForm = () => {
       console.log(err);
     }
   };
+  
 
   useEffect(() => {
     fetch(`https://gdsc-main-site.onrender.com/v1/event/${id}`)

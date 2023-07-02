@@ -30,13 +30,9 @@ const EventPage = () => {
             <h1 className="text-lg text-blue-400">Projects</h1>
             <div className="text-base">
               <h1 className="text-sm">
-                Developers Student Clubs is a Google developers program for
-                university student to learn mobile and web development skills
-                and leadership skills
+              Explore a list of projects accomplished by the GDSC AASTU Community. Our members and dedicated developers work diligently to solve problems and develop new technologies that bring benefits to the community.
               </h1>
-              <h1 className="text-sm">
-                Developer Student Clubs is a Google Developers
-              </h1>
+           
             </div>
           </div>
           {isLoading ? (

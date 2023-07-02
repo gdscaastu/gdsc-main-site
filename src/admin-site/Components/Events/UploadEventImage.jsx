@@ -25,7 +25,7 @@ const UploadEventImage = (props) => {
       });
       console.log(response.data);
       if (response.status === 200) {
-        navigate(`/admin/project`);
+        navigate(`/admin/event`);
     } else {
       alert("Something went wrong");
     }

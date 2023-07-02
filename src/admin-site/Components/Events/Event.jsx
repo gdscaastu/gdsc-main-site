@@ -26,7 +26,7 @@ const Event = () => {
       handelDeleteEvent(id);
     }
   };
-
+ 
   const handelDeleteEvent = (id) => {
     fetch(`https://gdsc-main-site.onrender.com/v1/event/${id}`, {
       method: "DELETE",

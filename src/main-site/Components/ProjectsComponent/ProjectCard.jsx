@@ -56,9 +56,18 @@ const ProjectCard = ({ project, isLoading }) => {
             <h1 className="text-black text-xs sm:hidden block text-center ml-2">
               {project.name}
             </h1>
-            <h1 className="text-black text-xs hidden sm:block">
+            <h1
+              className="text-black text-xs hidden sm:block"
+              style={{
+                display: "-webkit-box",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                WebkitLineClamp: 2, // Limit to 2 lines
+                WebkitBoxOrient: "vertical",
+              }} >
               {project.description}
-            </h1>
+        </h1>
+
           </>
         )}
       </div>

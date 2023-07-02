@@ -26,7 +26,7 @@ const AdminProject = () => {
       handelDeleteProject(id);
     }
   };
-
+ 
   const handelDeleteProject = (id) => {
     fetch(`https://gdsc-main-site.onrender.com/v1/project/${id}`, {
       method: "DELETE",

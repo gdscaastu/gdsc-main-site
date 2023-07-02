@@ -100,9 +100,10 @@ const Projectdetail = () => {
         style={{
           backgroundImage: `url(${imageUrls[0]})`,
           width: "100%",
-          height: "40vh",
+          height: "45vh",
           backgroundSize: "cover",
           backgroundPosition: "center",
+           backgroundRepeat: "no-repeat",
         }}>
         <div
           style={{
@@ -118,6 +119,7 @@ const Projectdetail = () => {
               backgroundColor: "white",
               padding: "15px",
               textAlign: "center",
+              fontWeight: "bold", 
             }}>
             {project.name}
           </h6>
@@ -132,7 +134,7 @@ const Projectdetail = () => {
           className="container">
           <p
             style={{
-              fontSize: "13px",
+              fontSize: "15px",
             }}>
             {project.description}
           </p>
@@ -142,25 +144,10 @@ const Projectdetail = () => {
             textAlign: "left",
           }}
           className="container mt-5">
-          <h6 style={{ color: "#4486f4" }}>Project Detail</h6>
+          <h6  style={{ fontWeight: "bold", fontSize: "20px", color: "#2E569B" }}>Project Detail</h6>
 
           <div className="">
-            <span
-              style={{
-                paddingRight: "10px",
-                fontweight: "600",
-              }}>
-              Project type:{" "}
-              <span
-                style={{
-                  fontSize: "13px",
-                  paddingRight: "10px",
-                  fontweight: "600",
-                }}
-                className="text-muted">
-                {project.project_type}
-              </span>
-            </span>
+              
             <span
               style={{
                 paddingRight: "10px",
@@ -173,7 +160,7 @@ const Projectdetail = () => {
                   fontsize: "13px",
                   fontWeight: "200",
                 }}
-                href="https://project.org">
+                href="#">
                 {project.project_link ? (
                   <span
                     style={{
@@ -194,6 +181,12 @@ const Projectdetail = () => {
               </a>
             </span>
           </div>
+          {/* Screenshoots */}
+          <div className="mt-5">
+            <h4 style={{ fontWeight: "bold", fontSize: "20px", color: "#333" }}>
+              Screenshots
+            </h4>
+          </div>
           <div className="mt-4 mb-5 flex flex-wrap">
             {imageUrls.map((item) => {
               return (
@@ -207,7 +200,9 @@ const Projectdetail = () => {
           {contributors ? (
             <div className="mt-5 mb-3">
               <div className="mt-5">
-                <h6>Contributors</h6>
+              <h4 style={{ fontWeight: "bold", fontSize: "20px", color: "#333" }}>
+        Contributors
+      </h4>
               </div>
               <div className="flex flex-wrap">
                 {contributors.map((contributer) => {

@@ -93,10 +93,13 @@ function MemberUpdateForm() {
                     <label htmlFor="github_url" className="block text-gray-700 font-bold mb-2">GitHub User name:</label>
                     <input type="text" name="github_url" id="github_url" value={github_url} onChange={(event) => setGithub_url(event.target.value)} className="shadow appearance-none border rounded w-[50vw] py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                 </div>
+                <label className="block text-gray-700 font-bold mb-2"> Member Type: </label>
                 <select value={member_type} onChange={(e) => setMemebr_type(e.target.value)} name="" id="" className="shadow appearance-none border rounded w-[50vw] py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <option value="Core Team">Core Team</option>
-                    <option value="Member">Member</option>
+                    <option value="CoreTeam">Core Team</option>
+                    <option value="Extended">Extended</option>
                     <option value="Alumni">Alumni</option>
+                    <option value="Contributor">Contributor</option>
+                    <option value="Mentor">Mentor</option>
                 </select>
                 <div className="mb-4">
                     <label htmlFor="year_joined" className="block text-gray-700 font-bold mb-2">Year Joined:</label>

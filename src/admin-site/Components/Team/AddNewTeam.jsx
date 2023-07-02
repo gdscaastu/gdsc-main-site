@@ -70,6 +70,9 @@ function MemberForm() {
             <option value="Core Team">Core Team</option>
             <option value="Extended">Extended</option>
             <option value="Alumni">Alumni</option>
+            <option value="Contributor">Contributor</option>
+            <option value="Mentor">Mentor</option>
+
         </select>
       
       <label className="block text-gray-700 font-bold mb-2">

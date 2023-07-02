@@ -27,7 +27,17 @@ const CardList = () => {
   useEffect(() => {
     axios
       .get("https://gdsc-main-site.onrender.com/v1/member")
-      .then((response) => setData(response.data))
+      .then((response) => {
+        const filteredData = response.data.filter(
+          (member) =>
+            member.member_type !== "Contributor" &&
+            member.member_type !== "Mentor"
+          // Add additional conditions if needed for other member types
+        );
+        setData(filteredData);
+      })
+
+      
       .then((response) => setIsLoading(false) )
       .catch((error) => console.log(error));
   }, []);
@@ -49,7 +59,7 @@ const CardList = () => {
   Object.keys(groupedByYear).forEach((year) => {
     groupedByYearAndPosition[year] = groupBy(groupedByYear[year], "member_type");
   });
-
+ 
   return (
     
     isLoading ? (

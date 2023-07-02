@@ -32,7 +32,7 @@ const AddNewEventFom = () => {
       !formData.date
     ) {
       console.error("Form data is invalid");
-      alert("please fill out all fields");
+      alert("Please fill out all fields");
       return;
     }
     try {
@@ -57,6 +57,7 @@ const AddNewEventFom = () => {
       console.log(err);
     }
   };
+  
   const handleCancel = () => {
     navigate("/admin/event");
   };

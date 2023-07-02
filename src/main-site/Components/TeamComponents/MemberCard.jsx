@@ -11,7 +11,7 @@ const MemberCard = (props) => {
         width: "18rem",
         boxShadow: "10px 10px 5px 0px rgb(196,196,196)",
       }}
-      className="mb-5 mx-3 bg-white">
+      className="mb-5 mx-3 pt-2 bg-white">
       <div className="container">
         <Card.Img
         className="mt-3 p-2 mx-auto d-block rounded-full border border-dark border-2"
@@ -25,8 +25,8 @@ const MemberCard = (props) => {
         />
       </div>
       <Card.Body>
-        <Card.Title className="my-3 p-2 text-black">{props.member.name}</Card.Title>
-        <Card.Text className="text-left my-2 p-2">
+        <Card.Title className="my-3 text-center pl-2 text-black">{props.member.name}</Card.Title>
+        <Card.Text className="text-left my-2 pl-2">
           <span className="text-blue-700">Position</span>: {props.member.position}<br/>  
           <span className="text-blue-700">Status</span>: {props.member.status}<br />
           <span className="text-blue-700">Joined year</span>: {props.member.year_joined}
@@ -39,13 +39,13 @@ const MemberCard = (props) => {
           flexDirection: "row",
           justifyContent: "space-around",
         }}
-        className="container mb-3 mt-3">
+        className="container mb-3 pb-5 mt-3">
         <a
           style={{
             color: "red",
             fontSize: "25px",
           }}
-          href={`https://twitter.com/${props.member.telegram_url}`}>
+          href={`https://twitter.com/${props.member.linkedin_url}`}>
           <i class="fab fa-twitter social-media-icon"></i>
         </a>
         <a
